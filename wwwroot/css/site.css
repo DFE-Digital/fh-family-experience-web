@@ -1,0 +1,40 @@
+/* Overrides for application css to be converted to SCSS */
+
+
+.govuk-back-link-or {
+    font-size: 0.875rem;
+    line-height: 1.1428571429;
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-decoration: underline;
+    text-decoration-thickness: max(1px, 0.0625rem);
+    text-underline-offset: 0.1em;
+    display: inline-block;
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 14px;
+}
+
+    .govuk-back-link-or:link, .govuk-back-link-or:visited {
+        color: #0b0c0c !important;
+    }
+
+    .govuk-back-link-or:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 3px;
+        width: 7px;
+        height: 7px;
+        margin: auto 0;
+        -webkit-transform: rotate(225deg);
+        -ms-transform: rotate(225deg);
+        transform: rotate(225deg);
+        border: solid;
+        border-width: 1px 1px 0 0;
+        border-color: #505a5f;
+    }
