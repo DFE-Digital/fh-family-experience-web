@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fh-family-experience-web", "fh-family-experience-web.csproj", "{9CFE03B7-881C-472F-A9B8-D3F98C245594}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fh-family-experience-api", "fh-family-experience-api\fh-family-experience-api.csproj", "{6AD9DF2D-A08A-4370-927F-295DD1AC6C2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fh-family-experience-api", "fh-family-experience-api\fh-family-experience-api.csproj", "{6AD9DF2D-A08A-4370-927F-295DD1AC6C2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

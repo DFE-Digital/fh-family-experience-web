@@ -1,4 +1,8 @@
+using fh_family_experience_web.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddRazorPages().AddRazorPagesOptions(
   options =>
@@ -13,9 +17,12 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseExceptionHandler("/error/500");
     app.UseHsts();
+}
+else
+{
+    app.UseStatusCodePagesWithRedirects("/Shared/Errors?errorNum={0}");
 }
 
 app.UseHttpsRedirection();
@@ -24,6 +31,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.MapRazorPages();
 
