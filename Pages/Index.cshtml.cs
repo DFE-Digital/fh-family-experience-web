@@ -1,4 +1,6 @@
 ﻿namespace fh_family_experience_web.Pages;
+
+using fh_family_experience_web.Pages.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -12,6 +14,10 @@ public class IndexModel : PageModel
     }
 
     public void OnGet()
+    {
+
+    }
+    public void OnPost()
     {
 
     }
