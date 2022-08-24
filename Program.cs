@@ -1,7 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages().AddRazorPagesOptions(
-  options => { options.Conventions.AddPageRoute("/FamilyHub", "poc"); }
+  options => { options.Conventions.AddPageRoute("/FamilyHub", "family-hub"); }
 );
 
 var app = builder.Build();
