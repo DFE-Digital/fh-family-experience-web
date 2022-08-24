@@ -1,8 +1,12 @@
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages().AddRazorPagesOptions(
-  options => { options.Conventions.AddPageRoute("/FamilyHub", "family-hub"); }
-);
+  options =>
+  {
+      options.Conventions.AddPageRoute("/Index", "home");
+      options.Conventions.AddPageRoute("/FamilyHub", "family-hub");
+      options.Conventions.AddPageRoute("/FindServicesOverview", "find-services-overview");
+  });
 
 var app = builder.Build();
 
