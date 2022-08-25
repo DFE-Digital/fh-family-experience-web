@@ -5,14 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 [PageHistory]
-public class FindServicesOverviewModel : PageModel
+public class FamilyHubResultsModel : PageModel
 {
     public void OnGet()
     {
-    }
-
-    public IActionResult OnPostAsync()
-    {
-        return new RedirectResult("findservicesgrouporactivity");
     }
 }

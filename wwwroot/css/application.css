@@ -3397,7 +3397,7 @@ p + .govuk-heading-s,
     border-top-color: inherit;
 }
 
-.govuk-details__text {
+/*.govuk-details__text {
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 20px;
@@ -3411,7 +3411,7 @@ p + .govuk-heading-s,
 
     .govuk-details__text > :last-child {
         margin-bottom: 0;
-    }
+    }*/
 
 .govuk-error-summary {
     color: #0b0c0c;

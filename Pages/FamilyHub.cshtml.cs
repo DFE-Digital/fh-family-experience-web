@@ -42,7 +42,7 @@ public class FamilyHubModel : PageModel
 
         //await OSPlacesPostcodeSearchAsync().ConfigureAwait(false!);
 
-        return new RedirectResult("Errors");
+        return new RedirectResult("familyhubresults");
     }
 
     public async Task PostcodeIOPostcodeSearchAsync()
