@@ -22,24 +22,25 @@ public class FamilyHubModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        if (!ModelState.IsValid)
-        {
-            return Page();
-        }
 
-        if (!PostcodeValidation.IsPostCode(Postcode ?? string.Empty))
-        {
-            ModelState.AddModelError(nameof(Postcode), "Postcode failed validation.");
-            return Page();
-        }
+        //if (!ModelState.IsValid)
+        //{
+        //    return Page();
+        //}
 
-        ModelState.Clear();
+        //if (!PostcodeValidation.IsPostCode(Postcode ?? string.Empty))
+        //{
+        //    ModelState.AddModelError(nameof(Postcode), "Postcode failed validation.");
+        //    return Page();
+        //}
 
-        await PostcodeIOPostcodeSearchAsync().ConfigureAwait(false!);
+        //ModelState.Clear();
 
-        await OSPlacesPostcodeSearchAsync().ConfigureAwait(false!);
+        //await PostcodeIOPostcodeSearchAsync().ConfigureAwait(false!);
 
-        return Page();
+        //await OSPlacesPostcodeSearchAsync().ConfigureAwait(false!);
+
+        return new RedirectResult("New Page!!!!");
     }
 
     public async Task PostcodeIOPostcodeSearchAsync()
