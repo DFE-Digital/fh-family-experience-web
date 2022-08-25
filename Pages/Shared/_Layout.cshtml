@@ -1,8 +1,14 @@
-﻿<!DOCTYPE html>
+﻿<!--  Using statements -->
+@using fh_family_experience_web.Helpers;
+@using fh_family_experience_web.Services;
+@using fh_family_experience_web.Filters;
+
+<!--  -->
+<!DOCTYPE html>
 <html lang="en" class="govuk-template">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewData["Title"] - Family experience</title>
+    <title>@ViewData["Title"] Family experience</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
 
@@ -25,15 +31,14 @@
     <link rel="stylesheet" href="~/css/govuk-frontend-ie8-4.3.1.min.css" />
 
     <meta property="og:image" content="/govuk/assets/images/govuk-opengraph-image.png">
-
 </head>
 
 <body class="govuk-template__body js-enabled">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
 
-    <partial name="CookieBanner.cshtml" model="null" view-data="null" />
-    <partial name="Header.cshtml" model="null" view-data="null" />
+    <partial name="_CookieBanner.cshtml" model="@Html.GetCookieViewModel()" view-data="ViewData" />
+    <partial name="_Header.cshtml" model="null" view-data="null" />
 
     <div class="govuk-width-container">
         <div class="govuk-phase-banner">
@@ -50,7 +55,8 @@
             bool isLandingPage = ViewContext.RouteData.Values.Where(v => v.Value!.ToString() == "/Index").Any();
             if (!isLandingPage)
             {
-                <a class="govuk-back-link-or" href="javascript:window.history.back()">Back</a>
+                List<string> pageHistory = ViewContext.HttpContext.Session.GetOrDefault<List<string>>(PageHistoryAttribute.PageHistorySessionKey) ?? new();
+                <a class="govuk-back-link-or" href="@(pageHistory.FirstOrDefault() ?? "home")">Back</a>
             }
         }
         <main class="govuk-main-wrapper custom-main" id="main-content" role="main">

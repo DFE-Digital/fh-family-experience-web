@@ -2,6 +2,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using fh_family_experience_web.Filters;
 using fh_family_experience_web.Helpers;
 using fh_family_experience_web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 
+[PageHistory]
 public class FamilyHubModel : PageModel
 {
     [BindProperty]
@@ -20,7 +22,7 @@ public class FamilyHubModel : PageModel
 
     public IOPostcodeData? IOPostcodeDataDisplay { get; set; } = null!;
 
-    public async Task<IActionResult> OnPostAsync()
+    public IActionResult OnPostAsync()
     {
 
         //if (!ModelState.IsValid)
@@ -40,7 +42,7 @@ public class FamilyHubModel : PageModel
 
         //await OSPlacesPostcodeSearchAsync().ConfigureAwait(false!);
 
-        return new RedirectResult("New Page!!!!");
+        return new RedirectResult("Errors");
     }
 
     public async Task PostcodeIOPostcodeSearchAsync()
