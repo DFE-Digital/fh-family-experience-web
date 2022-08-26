@@ -9,9 +9,21 @@
 
   <ItemGroup>
     <Compile Remove="fh-family-experience-api\**" />
+    <Compile Remove="fh-family-experience-core\**" />
+    <Compile Remove="fh-family-experience-infrastructure\**" />
+    <Compile Remove="fh-family-experience-sharedkernel\**" />
     <Content Remove="fh-family-experience-api\**" />
+    <Content Remove="fh-family-experience-core\**" />
+    <Content Remove="fh-family-experience-infrastructure\**" />
+    <Content Remove="fh-family-experience-sharedkernel\**" />
     <EmbeddedResource Remove="fh-family-experience-api\**" />
+    <EmbeddedResource Remove="fh-family-experience-core\**" />
+    <EmbeddedResource Remove="fh-family-experience-infrastructure\**" />
+    <EmbeddedResource Remove="fh-family-experience-sharedkernel\**" />
     <None Remove="fh-family-experience-api\**" />
+    <None Remove="fh-family-experience-core\**" />
+    <None Remove="fh-family-experience-infrastructure\**" />
+    <None Remove="fh-family-experience-sharedkernel\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,7 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\PostcodeModels\" />
+    <ProjectReference Include="fh-family-experience-infrastructure\fh-family-experience-infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

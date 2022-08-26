@@ -10,6 +10,8 @@ public class FindServicesGroupOrActivityModel : PageModel
     public void OnGet()
     {
     }
-
-    
+    public IActionResult OnPost()
+    {
+        return new RedirectResult("familyhub");
+    }
 }

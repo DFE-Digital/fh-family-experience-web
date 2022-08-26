@@ -174,6 +174,7 @@
         font-size: 19px;
         font-size: 1.1875rem;
         line-height: 1.3157894737;
+        border: none;
     }
 }
 
@@ -12742,19 +12743,22 @@ a:link:focus {
 }
 
 .nhsuk-action-link__link {
-    display: inline-block;
+    /*display: inline-block;*/
+    display: block;
     font-size: 22px;
     font-weight: 600;
     line-height: 1.55556;
     padding-left: 38px;
     position: relative;
     text-decoration: none;
+    border: none !important;
 }
 
 @media (min-width: 40.0625em) {
     .nhsuk-action-link__link {
         font-size: 22px;
         line-height: 1.45455;
+        border: none !important;
     }
 }
 

@@ -11,7 +11,7 @@ public class FindServicesOverviewModel : PageModel
     {
     }
 
-    public IActionResult OnPostAsync()
+    public IActionResult OnPost()
     {
         return new RedirectResult("findservicesgrouporactivity");
     }

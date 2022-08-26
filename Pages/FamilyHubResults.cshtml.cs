@@ -10,4 +10,8 @@ public class FamilyHubResultsModel : PageModel
     public void OnGet()
     {
     }
+    public IActionResult OnPost()
+    {
+        return new RedirectResult("FindServicesOverview");
+    }
 }

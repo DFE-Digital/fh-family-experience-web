@@ -15,7 +15,7 @@ public class PageHistoryAttribute : ResultFilterAttribute
             && context.HttpContext.Request.Method.ToUpper() == "POST"
             && context.Result is RedirectToPageResult or RedirectResult)
         {
-            var pageHistory = context.HttpContext.Session.GetOrDefault<List<string>>(PageHistorySessionKey) ?? new List<string>();
+            List<string> pageHistory = context.HttpContext.Session.GetOrDefault<List<string>>(PageHistorySessionKey) ?? new();
             pageHistory.Add(context.HttpContext.Request.Path);
             context.HttpContext.Session.Put(PageHistorySessionKey, pageHistory);
         }
@@ -25,7 +25,7 @@ public class PageHistoryAttribute : ResultFilterAttribute
     {
         if (context?.HttpContext?.Request?.Method is not null && context.HttpContext.Request.Method.ToUpper() == "GET")
         {
-            var pageHistory = context.HttpContext.Session.GetOrDefault<List<string>>(PageHistorySessionKey) ?? new List<string>();
+            List<string> pageHistory = context.HttpContext.Session.GetOrDefault<List<string>>(PageHistorySessionKey) ?? new();
 
             if (pageHistory.Any())
             {

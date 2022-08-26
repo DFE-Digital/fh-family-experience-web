@@ -35,7 +35,7 @@
 </head>
 
 <body class="govuk-template__body js-enabled">
-    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    @*<script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>*@
     <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
 
     <partial name="_CookieBanner.cshtml" model="@Html.GetCookieViewModel()" view-data="ViewData" />
@@ -57,7 +57,7 @@
             if (!isLandingPage)
             {
                 List<string> pageHistory = ViewContext.HttpContext.Session.GetOrDefault<List<string>>(PageHistoryAttribute.PageHistorySessionKey) ?? new();
-                <a class="govuk-back-link-or" href="@(pageHistory.FirstOrDefault() ?? "home")">Back</a>
+                <a class="govuk-back-link-or" href="@(pageHistory.LastOrDefault() ?? "home")">Back</a>
             }
         }
         <main class="govuk-main-wrapper custom-main" id="main-content" role="main">
