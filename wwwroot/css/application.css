@@ -12742,15 +12742,41 @@ a:link:focus {
     background-color: initial !important;
 }
 
+
+.nhsuk-action-link__text {
+    width: auto;
+    font-size: 20px;
+    align-content: flex-start;
+    display: flex;
+    cursor: pointer;
+}
+
+    .nhsuk-action-link__text:hover {
+        text-decoration: underline;
+        color: #003078;
+    }
+
+.nhsuk-action-link__submit {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.05556;
+    padding-left: 0px;
+    position: relative;
+    text-decoration: underline;
+    color: #4c2c92;
+    border: none !important;
+    cursor: pointer;
+}
+
 .nhsuk-action-link__link {
-    /*display: inline-block;*/
-    display: block;
+    display: inline-block;
     font-size: 22px;
     font-weight: 600;
     line-height: 1.55556;
     padding-left: 38px;
     position: relative;
     text-decoration: none;
+    color: #4c2c92;
     border: none !important;
 }
 
@@ -12772,7 +12798,7 @@ a:visited {
     color: #4c2c92;
 }
 
-.nhsuk-action-link a:hover {
+.nhsuk-action-link_link a:hover {
     text-decoration: underline;
     color: #003078;
 }

@@ -13,6 +13,6 @@ public class FindServicesOverviewModel : PageModel
 
     public IActionResult OnPost()
     {
-        return new RedirectResult("findservicesgrouporactivity");
+        return new RedirectResult("FindServicesGroupOrActivity");
     }
 }

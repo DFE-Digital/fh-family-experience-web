@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 [PageHistory]
-public class FindServicesGroupOrActivityModel : PageModel
+public class FamilyHRBadJourneyModel : PageModel
 {
     public void OnGet()
     {
     }
 
-    public IActionResult OnPost()
+    public IActionResult OnPostLocalServices()
     {
-        return new RedirectResult("FamilyHub");
+        return new RedirectResult("FindServicesOverview");
     }
 }

@@ -12,11 +12,8 @@ builder.Services.AddRazorPages().AddRazorPagesOptions(
       options.Conventions.AddPageRoute("/FamilyHub", "family-hub");
       options.Conventions.AddPageRoute("/FamilyHubResults", "find-hub-results");
       options.Conventions.AddPageRoute("/FindServicesOverview", "find-services-overview");
-
       options.Conventions.AddPageRoute("/FindServicesGroupOrActivity", "find-services-group-or-activity");
-
-      /* Page pending development */
-      options.Conventions.AddPageRoute("/Errors", "family-hub-results-bad-journey");
+      options.Conventions.AddPageRoute("/FamilyHRBadJourney", "family-hr-bad-journey");
   });
 
 builder.Services.AddSession(options =>
