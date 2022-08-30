@@ -12742,17 +12742,14 @@ a:link:focus {
     background-color: initial !important;
 }
 
-
 .nhsuk-action-link__text {
-    width: auto;
     font-size: 20px;
-    align-content: flex-start;
-    display: flex;
     cursor: pointer;
 }
 
     .nhsuk-action-link__text:hover {
         text-decoration: underline;
+        text-decoration-skip-ink: none;
         color: #003078;
     }
 
