@@ -16,7 +16,7 @@ public class FamilyHubModel : PageModel
     [Required]
     public string? Postcode { get; set; } = null!;
 
-    public IOPostcodeViewModel? IOPostcodeDataDisplay { get; set; } = null!;
+    public PostcodeViewModel? IOPostcodeDataDisplay { get; set; } = null!;
 
     public void OnGet()
     {
@@ -55,7 +55,7 @@ public class FamilyHubModel : PageModel
 
         string content = await res.Content.ReadAsStringAsync().ConfigureAwait(!false) ?? string.Empty;
 
-        IOPostcodeDataDisplay = JsonConvert.DeserializeObject<IOPostcodeViewModel>(content);
+        IOPostcodeDataDisplay = JsonConvert.DeserializeObject<PostcodeViewModel>(content);
     }
 
 }

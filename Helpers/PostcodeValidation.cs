@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 public static class PostcodeValidation
 {
-    static public bool IsPostCode(string postcode)
+    public static bool IsPostCode(string postcode)
     {
         return
             Regex.IsMatch(postcode, "(^[A-PR-UWYZa-pr-uwyz][0-9][ ]*[0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}$)") ||

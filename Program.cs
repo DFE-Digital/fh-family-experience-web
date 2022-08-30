@@ -1,6 +1,24 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using fh_family_experience_core;
 using fh_family_experience_core.Services;
+using fh_family_experience_infrastructure;
+using fh_family_experience_infrastructure.Data;
+using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.CheckConsentNeeded = context => true;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+});
+
+string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext(connectionString);
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -22,6 +40,19 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+    c.EnableAnnotations();
+});
+
+
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+{
+    containerBuilder.RegisterModule(new DefaultCoreModule());
+    containerBuilder.RegisterModule(new DefaultInfrastructureModule(builder.Environment.IsDevelopment()));
+});
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -33,6 +64,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseCookiePolicy();
+
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
 
 app.UseRouting();
 app.UseSession();
@@ -40,6 +74,9 @@ app.UseAuthorization();
 
 app.UseMiddleware<ErrorHandlerMiddleware>();
 
-app.MapRazorPages();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapRazorPages();
+});
 
 app.Run();
