@@ -3,14 +3,3 @@
 ################################################################################
 
 /.vs
-/bin/Debug/net6.0
-/obj
-/fh-family-experience-web.csproj.user
-/fh-family-experience-api/bin/Debug/net6.0
-/fh-family-experience-api/obj
-/fh-family-experience-core/obj
-/fh-family-experience-core/bin/Debug/net6.0
-/fh-family-experience-infrastructure/bin/Debug/net6.0
-/fh-family-experience-infrastructure/obj
-/fh-family-experience-sharedkernel/bin/Debug/net6.0
-/fh-family-experience-sharedkernel/obj
