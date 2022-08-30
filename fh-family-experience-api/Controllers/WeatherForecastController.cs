@@ -1,4 +1,6 @@
 namespace fh_family_experience_api.Controllers;
+
+using fh_family_experience_api.Models;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]

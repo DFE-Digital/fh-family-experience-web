@@ -1,4 +1,4 @@
-﻿namespace fh_family_experience_web.Services;
+﻿namespace fh_family_experience_core.Services;
 
 using Microsoft.AspNetCore.Http;
 using System;
@@ -56,7 +56,7 @@ public class AppException : Exception
     public AppException(string message) : base(message) { }
 
     public AppException(string message, params object[] args)
-        : base(String.Format(CultureInfo.CurrentCulture, message, args))
+        : base(string.Format(CultureInfo.CurrentCulture, message, args))
     {
     }
 }

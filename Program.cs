@@ -1,5 +1,4 @@
-using fh_family_experience_web.Services;
-using Microsoft.AspNetCore.SignalR;
+using fh_family_experience_core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

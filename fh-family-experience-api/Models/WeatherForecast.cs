@@ -1,4 +1,4 @@
-namespace fh_family_experience_api;
+namespace fh_family_experience_api.Models;
 
 public class WeatherForecast
 {

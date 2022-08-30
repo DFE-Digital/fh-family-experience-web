@@ -1,4 +1,4 @@
-﻿namespace fh_family_experience_web.Helpers;
+﻿namespace fh_family_experience_web.Extensions;
 
 using fh_family_experience_web.ViewModels;
 using fh_family_experience_web.ViewModels.Interfaces;
