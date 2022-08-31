@@ -4,7 +4,7 @@ using fh_family_experience_sharedkernel.Enums;
 
 public class ServiceItem : EntityBase
 {
-    public virtual Organisation? OrganisationId { get; set; } = null!;
+    public virtual List<Organisation>? OrganisationId { get; set; } = null!;
 
     public string? Name { get; set; } = null!;
     public string? Description { get; set; } = null!;

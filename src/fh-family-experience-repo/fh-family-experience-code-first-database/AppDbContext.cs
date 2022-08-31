@@ -1,16 +1,11 @@
-﻿namespace fh_family_experience_infrastructure.Data;
+﻿namespace fh_family_experience_code_first_database;
 
 using fh_family_experience_sharedkernel.Entities;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
+using System.Data.Entity;
 
 public class AppDbContext : DbContext
 {
-    public AppDbContext()
-    {
-    }
-
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    public AppDbContext() : base("fh-family-experience")
     {
     }
 
@@ -23,11 +18,8 @@ public class AppDbContext : DbContext
     public DbSet<ServiceAtLocation> ServiceAtLocation => Set<ServiceAtLocation>();
     public DbSet<ServiceItem> ServiceItem => Set<ServiceItem>();
 
-    public DbSet<ServiceItem> ServiceItems => Set<ServiceItem>();
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }
