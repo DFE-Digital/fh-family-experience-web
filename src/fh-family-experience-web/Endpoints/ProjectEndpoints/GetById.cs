@@ -1,7 +1,6 @@
-﻿namespace NimblePros.DotNetConf.Web.Endpoints.ProjectEndpoints;
+﻿namespace fh_family_experience_web.Endpoints.ProjectEndpoints;
 
 using Ardalis.ApiEndpoints;
-using fh_family_experience_web.Endpoints.ProjectEndpoints;
 using Microsoft.AspNetCore.Mvc;
 
 
