@@ -32,3 +32,5 @@
 /src/fh-family-experience-web/obj
 /src/fh-family-experience-repo/fh-family-experience-repo-redis/obj
 /src/fh-family-experience-repo/fh-family-experience-repo-sql/obj/Debug
+/src/fh-family-experience-repo/fh-family-experience-repo-redis/bin/Debug/net6.0
+/src/fh-family-experience-repo/fh-family-experience-repo-sql/bin/Debug
