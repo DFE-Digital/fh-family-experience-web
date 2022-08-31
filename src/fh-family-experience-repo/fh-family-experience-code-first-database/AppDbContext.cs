@@ -1,15 +1,12 @@
 ﻿namespace fh_family_experience_code_first_database;
 
 using fh_family_experience_sharedkernel.Entities;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 public class AppDbContext : DbContext
 {
-    public AppDbContext() : base("fh-family-experience")
-    {
-    }
-
-    public DbSet<AccessibilityForDisabilities> AccessibilityForDisabilities => Set<AccessibilityForDisabilities>();
+    public DbSet<AccessibilityForDisabilities>? AccessibilityForDisabilities { get; set; }
     public DbSet<HolidaySchedule> HolidaySchedule => Set<HolidaySchedule>();
     public DbSet<Location> Location => Set<Location>();
     public DbSet<Organisation> Organisation => Set<Organisation>();
@@ -18,8 +15,9 @@ public class AppDbContext : DbContext
     public DbSet<ServiceAtLocation> ServiceAtLocation => Set<ServiceAtLocation>();
     public DbSet<ServiceItem> ServiceItem => Set<ServiceItem>();
 
-    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
     {
-        base.OnModelCreating(modelBuilder);
+        optionsBuilder.UseSqlServer("Server=LAPTOP-J6PB0R59\\SQLEXPRESS;Database=CleanArchitecture;Trusted_Connection=True;MultipleActiveResultSets=true");
+        base.OnConfiguring (optionsBuilder);
     }
 }
