@@ -6,6 +6,7 @@ using fh_family_experience_infrastructure;
 using fh_family_experience_infrastructure.Data;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.DependencyInjection;
+using fh_family_experience_core.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,7 +43,7 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "FX API", Version = "v1" });
     c.EnableAnnotations();
 });
 
@@ -66,7 +67,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseCookiePolicy();
 
-app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FX API"));
 
 app.UseRouting();
 app.UseSession();

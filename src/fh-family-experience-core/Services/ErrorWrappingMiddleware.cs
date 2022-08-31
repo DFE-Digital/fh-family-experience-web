@@ -1,5 +1,6 @@
 ﻿namespace fh_family_experience_core.Services;
 
+using fh_family_experience_core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-public class ErrorHandlerMiddleware
+public class ErrorHandlerMiddleware : IErrorHandlerMiddleware
 {
     private readonly RequestDelegate _next;
 

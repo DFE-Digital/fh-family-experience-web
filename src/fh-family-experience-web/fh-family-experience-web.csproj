@@ -56,7 +56,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="fh-family-experience-infrastructure\fh-family-experience-infrastructure.csproj" />
+    <ProjectReference Include="..\fh-family-experience-infrastructure\fh-family-experience-infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

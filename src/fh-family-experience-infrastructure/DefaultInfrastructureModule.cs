@@ -30,22 +30,20 @@ public class DefaultInfrastructureModule : Module
         RegisterCommonDependencies(builder);
     }
 
-    private void RegisterCommonDependencies(ContainerBuilder builder)
+    private static void RegisterCommonDependencies(ContainerBuilder builder)
     {
         builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IReadRepository<>)).InstancePerLifetimeScope();
     }
 
-    private void RegisterDevelopmentOnlyDependencies(ContainerBuilder builder)
+    private static void RegisterDevelopmentOnlyDependencies(ContainerBuilder builder)
     {
         // NOTE: Add any development only services here
-        //builder.RegisterType<FakeEmailSender>().As<IEmailSender>()
-        //  .InstancePerLifetimeScope();
+        //builder.RegisterType<FakeEmailSender>().As<IEmailSender>().InstancePerLifetimeScope();
     }
 
-    private void RegisterProductionOnlyDependencies(ContainerBuilder builder)
+    private static void RegisterProductionOnlyDependencies(ContainerBuilder builder)
     {
         // NOTE: Add any production only services here
-        //builder.RegisterType<SmtpEmailSender>().As<IEmailSender>()
-        //  .InstancePerLifetimeScope();
+        //builder.RegisterType<SmtpEmailSender>().As<IEmailSender>().InstancePerLifetimeScope();
     }
 }
