@@ -1,0 +1,95 @@
+﻿@using fh_family_experience_web.Helpers
+@using fh_family_experience_web.ViewModels
+@using fh_family_experience_web.ViewModels.Interfaces
+
+@model ICookieViewModel
+@{
+    CookieViewModel? localModel = ViewContext.HttpContext.Session.GetOrDefault<CookieViewModel>("CookieSetUp") ?? null;
+    if (localModel == null)
+    {
+        ViewContext.HttpContext.Session.Put<ICookieViewModel>("CookieSetUp", Model);
+    }
+    localModel = ViewContext.HttpContext.Session.GetOrDefault<CookieViewModel>("CookieSetUp");
+
+    #region HideNSeek
+    if (!(bool)localModel.Hide)
+    {
+        if (!(bool)localModel.Accepted && !(bool)localModel.Accepted)
+        {
+            localModel.Accepted = ViewContext.HttpContext.Request.Query.Keys.Where(v => v!.ToString() == "accepted").Any();
+            localModel.Rejected = ViewContext.HttpContext.Request.Query.Keys.Where(v => v!.ToString() == "rejected").Any();
+        }
+        localModel.Hide = ViewContext.HttpContext.Request.Query.Keys.Where(v => v!.ToString() == "hide").Any();
+
+        if ((bool)localModel.Accepted || (bool)localModel.Rejected || (bool)localModel.Hide)
+            ViewContext.HttpContext.Session.Put<ICookieViewModel>("CookieSetUp", localModel);
+    }
+    #endregion
+}
+
+<div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on @localModel.DisplayServiceName">
+    <div class="govuk-cookie-banner__message govuk-width-container">
+        @{
+            if (!(bool)localModel.Hide)
+            {
+                if (!(bool)localModel.Accepted && !(bool)localModel.Rejected)
+                {
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-two-thirds">
+                            <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on @localModel.DisplayServiceName</h2>
+
+                            <div class="govuk-cookie-banner__content">
+                                <p class="govuk-body">We use some essential cookies to make this service work.</p>
+                                <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="govuk-button-group">
+                        <a value="accept" type="button" id="accept-cookies" class="govuk-button govuk-link--no-underline" data-module="govuk-button" href="@localModel.CurrentRoute?accepted=true">
+                            Accept analytics cookies
+                        </a>
+                        <a value="reject" type="button" id="reject-cookies" class="govuk-button govuk-link--no-underline" data-module="govuk-button" href="@localModel.CurrentRoute?rejected=true">
+                            Reject analytics cookies
+                        </a>
+                        <a class="govuk-link" href="@localModel.ViewCookiesUrl" target="_blank">View cookies</a>
+                    </div>
+                }
+                if ((bool)localModel.Accepted)
+                {
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-two-thirds">
+
+                            <div class="govuk-cookie-banner__content">
+                                <p class="govuk-body">You’ve accepted additional cookies. You can <a class="govuk-link" href="#">change your cookie settings</a> at any time.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="govuk-button-group">
+                        <a href="@localModel.CurrentRoute?hide=true" role="button" draggable="false" class="govuk-button govuk-link--no-underline" data-module="govuk-button">
+                            Hide cookie message
+                        </a>
+                    </div>
+                }
+                if ((bool)localModel.Rejected)
+                {
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-two-thirds">
+
+                            <div class="govuk-cookie-banner__content">
+                                <p class="govuk-body">You’ve rejected analytics cookies. You can <a class="govuk-link" href="#">change your cookie settings</a> at any time.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="govuk-button-group">
+                        <a href="@localModel.CurrentRoute?hide=true" role="button" draggable="false" class="govuk-button govuk-link--no-underline" data-module="govuk-button">
+                            Hide cookie message
+                        </a>
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>

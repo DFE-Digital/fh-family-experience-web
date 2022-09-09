@@ -1,0 +1,24 @@
+﻿@page
+@model FamilyHRBadJourneyModel
+@{
+}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
+            Not seeing anything suitable in your area?
+        </h1>
+
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form id="bad-journey" method="post">
+            <p class="govuk-body">
+                You can also find
+                <input type="submit" class="nhsuk-action-link__submit" value="local services and groups" asp-page-handler="localservices">
+            </p>
+        </form>
+    </div>
+</div>
