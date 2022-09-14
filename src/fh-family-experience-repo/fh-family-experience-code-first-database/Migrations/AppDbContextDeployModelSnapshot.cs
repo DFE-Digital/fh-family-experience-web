@@ -893,11 +893,11 @@ namespace fh_family_experience_code_first_database.Migrations
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.CostOption", b =>
                 {
                     b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
-                        .WithMany("Cost_options")
+                        .WithMany("CostOptions")
                         .HasForeignKey("EligibilityId");
 
                     b.HasOne("fh_family_experience_sharedkernel.Entities.Service", null)
-                        .WithMany("Cost_options")
+                        .WithMany("CostOtions")
                         .HasForeignKey("ServiceId");
                 });
 
@@ -1065,7 +1065,7 @@ namespace fh_family_experience_code_first_database.Migrations
                 {
                     b.Navigation("Contacts");
 
-                    b.Navigation("Cost_options");
+                    b.Navigation("CostOptions");
 
                     b.Navigation("Eligibilities");
 
@@ -1104,7 +1104,7 @@ namespace fh_family_experience_code_first_database.Migrations
                 {
                     b.Navigation("Contacts");
 
-                    b.Navigation("Cost_options");
+                    b.Navigation("CostOtions");
 
                     b.Navigation("Eligibilities");
 

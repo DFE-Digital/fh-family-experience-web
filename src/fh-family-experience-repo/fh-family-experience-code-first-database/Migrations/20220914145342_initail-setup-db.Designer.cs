@@ -12,7 +12,7 @@ using fh_family_experience_code_first_database;
 namespace fh_family_experience_code_first_database.Migrations
 {
     [DbContext(typeof(AppDbContextDeploy))]
-    [Migration("20220914142348_initail-setup-db")]
+    [Migration("20220914145342_initail-setup-db")]
     partial class initailsetupdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -895,11 +895,11 @@ namespace fh_family_experience_code_first_database.Migrations
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.CostOption", b =>
                 {
                     b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
-                        .WithMany("Cost_options")
+                        .WithMany("CostOptions")
                         .HasForeignKey("EligibilityId");
 
                     b.HasOne("fh_family_experience_sharedkernel.Entities.Service", null)
-                        .WithMany("Cost_options")
+                        .WithMany("CostOtions")
                         .HasForeignKey("ServiceId");
                 });
 
@@ -1067,7 +1067,7 @@ namespace fh_family_experience_code_first_database.Migrations
                 {
                     b.Navigation("Contacts");
 
-                    b.Navigation("Cost_options");
+                    b.Navigation("CostOptions");
 
                     b.Navigation("Eligibilities");
 
@@ -1106,7 +1106,7 @@ namespace fh_family_experience_code_first_database.Migrations
                 {
                     b.Navigation("Contacts");
 
-                    b.Navigation("Cost_options");
+                    b.Navigation("CostOtions");
 
                     b.Navigation("Eligibilities");
 

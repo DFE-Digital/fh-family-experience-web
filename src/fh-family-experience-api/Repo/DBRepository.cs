@@ -9,6 +9,9 @@ public class DBRepository : IRepository
 {
     public DBRepository()
     {
+        List<Service> services = new();
+
+
         using var context = new ApiContext();
         List<Organisation> organisations = new()
                 {
@@ -19,7 +22,9 @@ public class DBRepository : IRepository
                     Name="Name 1",
                     LogoUrl="www.google.com",
                     Logo="image1",
-                    Url="www.google.com"
+                    Url="www.google.com",
+                    Services =  new List<Service>(),
+                    Reviews = new List<Review>()
                 },
                 new Organisation
                 {
@@ -28,23 +33,14 @@ public class DBRepository : IRepository
                     Name="Name 2",
                     LogoUrl="www.google.com",
                     Logo="image2",
-                    Url="www.google.com"
+                    Url="www.google.com",
+                    Services =  new List<Service>(),
+                    Reviews = new List<Review>()
                 }
                 };
 
         context.Organisations.AddRange(organisations);
         context.SaveChanges();
-
-        List<Service> services = new()
-        {
-            new Service
-            {
-                  Fees = "£50.00",
-                  Name = "Name Of Service",
-                  
-
-            }
-        };
 
     }
 
