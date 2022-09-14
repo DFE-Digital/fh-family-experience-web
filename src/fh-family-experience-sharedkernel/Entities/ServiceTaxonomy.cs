@@ -3,6 +3,6 @@ using System.Collections.Generic;
 
 public class ServiceTaxonomy : EntityBase
 {
-    public virtual List<Service>? ServiceId { get; set; } = null!;
-    public virtual List<Taxononmy>? TaxononmyId { get; set; } = null!;
+    public virtual ICollection<Service>? ServiceId { get; set; } = null!;
+    public virtual ICollection<Taxononmy>? TaxononmyId { get; set; } = null!;
 }

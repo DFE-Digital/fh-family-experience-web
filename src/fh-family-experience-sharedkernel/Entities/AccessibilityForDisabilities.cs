@@ -2,6 +2,6 @@
 
 public class AccessibilityForDisabilities : EntityBase
 {
-    public List<Location>? LocationId { get; set; } = null!;
+    public virtual ICollection<Location>? LocationId { get; set; } = null!;
     public string? Accessibility { get; set; } = null!;
 }

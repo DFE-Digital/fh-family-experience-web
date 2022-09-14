@@ -1,8 +1,12 @@
+
+using fh_family_experience_api.Interfaces;
+using fh_family_experience_api.Repo;
 using fh_family_experience_core.Interfaces;
 using fh_family_experience_core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<IRepository, DBRepository>();
 
 builder.Services.AddControllers();
 
@@ -11,7 +15,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -21,9 +24,7 @@ if (app.Environment.IsDevelopment())
 app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

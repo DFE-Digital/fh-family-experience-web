@@ -1,6 +1,5 @@
 ﻿namespace fh_family_experience_infrastructure.Data;
 
-using fh_family_experience_sharedkernel.Entities;
 using fh_family_experience_sharedkernel.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
