@@ -89,7 +89,8 @@ namespace fh_family_experience_code_first_database.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal?>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(14, 2)
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<string>("AmountDescription")
                         .HasColumnType("nvarchar(max)");

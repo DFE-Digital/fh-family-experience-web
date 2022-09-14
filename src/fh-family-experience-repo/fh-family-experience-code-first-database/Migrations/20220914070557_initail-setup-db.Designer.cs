@@ -12,7 +12,7 @@ using fh_family_experience_code_first_database;
 namespace fh_family_experience_code_first_database.Migrations
 {
     [DbContext(typeof(AppDbContextDeploy))]
-    [Migration("20220914064447_initail-setup-db")]
+    [Migration("20220914070557_initail-setup-db")]
     partial class initailsetupdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,7 +91,8 @@ namespace fh_family_experience_code_first_database.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal?>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(14, 2)
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<string>("AmountDescription")
                         .HasColumnType("nvarchar(max)");

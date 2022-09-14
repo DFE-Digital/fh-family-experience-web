@@ -1,8 +1,10 @@
 ﻿namespace fh_family_experience_code_first_database;
 
 using fh_family_experience_infrastructure.Data;
+using fh_family_experience_sharedkernel.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System;
 
 public class AppDbContextDeploy : AppDbContext
 {
