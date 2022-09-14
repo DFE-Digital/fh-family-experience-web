@@ -217,6 +217,64 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.ToTable("HolidaySchedule");
                 });
 
+            modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.Language", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LanguagesOtherThanEnglish")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastUpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Languages");
+                });
+
+            modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.LinkTaxonomy", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastUpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LinkId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("LinkType")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("TaxononmyId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LinkTaxonomies");
+                });
+
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.Location", b =>
                 {
                     b.Property<Guid>("Id")
@@ -533,6 +591,9 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<Guid?>("HolidayScheduleId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("LanguageId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime?>("LastUpdated")
                         .HasColumnType("datetime2");
 
@@ -574,6 +635,8 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.HasIndex("FundingId");
 
                     b.HasIndex("HolidayScheduleId");
+
+                    b.HasIndex("LanguageId");
 
                     b.HasIndex("RegularScheduleId");
 
@@ -768,6 +831,10 @@ namespace fh_family_experience_code_first_database.Migrations
                         .WithMany("ServiceId")
                         .HasForeignKey("HolidayScheduleId");
 
+                    b.HasOne("fh_family_experience_sharedkernel.Entities.Language", null)
+                        .WithMany("ServiceId")
+                        .HasForeignKey("LanguageId");
+
                     b.HasOne("fh_family_experience_sharedkernel.Entities.RegularSchedule", null)
                         .WithMany("ServiceId")
                         .HasForeignKey("RegularScheduleId");
@@ -836,6 +903,11 @@ namespace fh_family_experience_code_first_database.Migrations
                 {
                     b.Navigation("ServiceAtLocationId");
 
+                    b.Navigation("ServiceId");
+                });
+
+            modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.Language", b =>
+                {
                     b.Navigation("ServiceId");
                 });
 

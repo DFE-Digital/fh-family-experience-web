@@ -100,6 +100,40 @@ namespace fh_family_experience_code_first_database.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Languages",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LanguagesOtherThanEnglish = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Languages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LinkTaxonomies",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LinkType = table.Column<int>(type: "int", nullable: true),
+                    LinkId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TaxononmyId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LinkTaxonomies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Phones",
                 columns: table => new
                 {
@@ -348,6 +382,7 @@ namespace fh_family_experience_code_first_database.Migrations
                     EligibilityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     FundingId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     HolidayScheduleId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     RegularScheduleId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ReviewId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ServiceAreaId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
@@ -385,6 +420,11 @@ namespace fh_family_experience_code_first_database.Migrations
                         name: "FK_Services_HolidaySchedule_HolidayScheduleId",
                         column: x => x.HolidayScheduleId,
                         principalTable: "HolidaySchedule",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Services_Languages_LanguageId",
+                        column: x => x.LanguageId,
+                        principalTable: "Languages",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Services_RegularSchedules_RegularScheduleId",
@@ -512,6 +552,11 @@ namespace fh_family_experience_code_first_database.Migrations
                 column: "HolidayScheduleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Services_LanguageId",
+                table: "Services",
+                column: "LanguageId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Services_RegularScheduleId",
                 table: "Services",
                 column: "RegularScheduleId");
@@ -545,6 +590,9 @@ namespace fh_family_experience_code_first_database.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "LinkTaxonomies");
+
+            migrationBuilder.DropTable(
                 name: "Locations");
 
             migrationBuilder.DropTable(
@@ -573,6 +621,9 @@ namespace fh_family_experience_code_first_database.Migrations
 
             migrationBuilder.DropTable(
                 name: "Fundings");
+
+            migrationBuilder.DropTable(
+                name: "Languages");
 
             migrationBuilder.DropTable(
                 name: "Reviews");
