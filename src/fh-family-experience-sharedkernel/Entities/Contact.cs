@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Contact : EntityBase
 {
-    public virtual ICollection<Service>? ServiceId { get; set; } = null!;
+    public virtual ICollection<Phone>? Phones { get; set; } = null!;
     public string? Name { get; set; } = null!;
     public string? Title { get; set; } = null!;
 }

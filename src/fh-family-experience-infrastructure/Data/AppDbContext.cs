@@ -27,5 +27,5 @@ public class AppDbContext : DbContext
     public DbSet<ServiceArea> ServiceAreas => Set<ServiceArea>();
     public DbSet<ServiceAtLocation> ServiceAtLocations => Set<ServiceAtLocation>();
     public DbSet<ServiceTaxonomy> ServiceTaxonomies => Set<ServiceTaxonomy>();
-    public DbSet<Taxononmy> Taxononmies => Set<Taxononmy>();
+    public DbSet<Taxonomy> Taxononmies => Set<Taxonomy>();
 }

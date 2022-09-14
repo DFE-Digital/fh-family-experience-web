@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 public class Review : EntityBase
 {
-    public ICollection<Service>? ServiceId { get; set; } = null!;
-    public ICollection<Organisation>? ReviewerOrganisationId { get; set; } = null!;
+    public virtual Service? Service { get; set; } = null!;
     public string? Title { get; set; } = null!;
     public string? Description { get; set; } = null!;
     public DateTime? Date { get; set; } = null!;

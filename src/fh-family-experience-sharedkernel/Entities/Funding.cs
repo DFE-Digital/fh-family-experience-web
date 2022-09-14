@@ -3,6 +3,5 @@ using System.Collections.Generic;
 
 public class Funding : EntityBase
 {
-    public virtual ICollection<Service>? ServiceId { get; set; } = null!;
     public string? Source { get; set; } = null!;
 }

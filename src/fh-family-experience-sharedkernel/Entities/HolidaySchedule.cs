@@ -2,8 +2,6 @@
 
 public class HolidaySchedule : EntityBase
 {
-    public ICollection<Service>? ServiceId { get; set; } = null!;
-    public ICollection<ServiceAtLocation>? ServiceAtLocationId { get; set; } = null!;
     public Boolean? Closed { get; set; } = null!;
     public DateTime? OpensAt { get; set; } = null!;
     public DateTime? ClosesAt { get; set; } = null!;
