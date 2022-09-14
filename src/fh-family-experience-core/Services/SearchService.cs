@@ -15,12 +15,12 @@ public class SearchService : ISearchService
         _repository = repository;
     }
 
-    public Task<List<ServiceItem>> GetAllItemsAsync(int serviceId, string searchString)
+    public Task<List<Service>> GetAllItemsAsync(int serviceId, string searchString)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<ServiceItem>> GetNextItemAsync(int serviceId)
+    public Task<List<Service>> GetNextItemAsync(int serviceId)
     {
         throw new NotImplementedException();
     }

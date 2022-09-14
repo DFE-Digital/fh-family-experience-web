@@ -2,7 +2,7 @@
 
 using fh_family_experience_sharedkernel.Enums;
 
-public class ServiceItem : EntityBase
+public class Service : EntityBase
 {
     public virtual List<Organisation>? OrganisationId { get; set; } = null!;
 

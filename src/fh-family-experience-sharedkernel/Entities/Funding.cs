@@ -1,6 +1,8 @@
 ﻿namespace fh_family_experience_sharedkernel.Entities;
-public class ServiceAtLocation : EntityBase
+using System.Collections.Generic;
+
+public class Funding : EntityBase
 {
     public virtual List<Service>? ServiceId { get; set; } = null!;
-    public virtual List<Location>? LocationId { get; set; } = null!;
+    public string? Source { get; set; } = null!;
 }

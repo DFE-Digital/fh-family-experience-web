@@ -3,7 +3,7 @@ public class ServiceCatagory : EntityBase
 {
     public string? Name { get; private set; } = null!;
 
-    private List<ServiceItem> _items = new();
-    public IEnumerable<ServiceItem> Items => _items.AsReadOnly();
+    private List<Service> _items = new();
+    public IEnumerable<Service> Items => _items.AsReadOnly();
 
 }

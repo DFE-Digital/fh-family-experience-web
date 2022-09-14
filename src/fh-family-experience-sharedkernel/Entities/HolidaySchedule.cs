@@ -2,7 +2,7 @@
 
 public class HolidaySchedule : EntityBase
 {
-    public List<ServiceItem>? ServiceItemId { get; set; } = null!;
+    public List<Service>? ServiceId { get; set; } = null!;
     public List<ServiceAtLocation>? ServiceAtLocationId { get; set; } = null!;
     public Boolean? Closed { get; set; } = null!;
     public DateTime? OpensAt { get; set; } = null!;

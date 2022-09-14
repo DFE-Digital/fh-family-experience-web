@@ -4,7 +4,7 @@ using fh_family_experience_sharedkernel.Enums;
 
 public class RegularSchedule : EntityBase
 {
-    public List<ServiceItem>? ServiceItemId { get; set; } = null!;
+    public List<Service>? ServiceId { get; set; } = null!;
     public List<ServiceAtLocation>? ServiceAtLocationId { get; set; } = null;
     public int? WeekDay { get; set; } = null;
     public DateTime? OpensAt { get; set; } = null!;

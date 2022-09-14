@@ -4,6 +4,6 @@ using fh_family_experience_sharedkernel.Entities;
 
 public interface ISearchService
 {
-    Task<List<ServiceItem>> GetNextItemAsync(int serviceId);
-    Task<List<ServiceItem>> GetAllItemsAsync(int serviceId, string searchString);
+    Task<List<Service>> GetNextItemAsync(int serviceId);
+    Task<List<Service>> GetAllItemsAsync(int serviceId, string searchString);
 }
