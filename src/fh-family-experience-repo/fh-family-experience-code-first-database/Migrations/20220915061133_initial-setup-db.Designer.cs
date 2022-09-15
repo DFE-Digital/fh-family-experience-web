@@ -12,8 +12,8 @@ using fh_family_experience_code_first_database;
 namespace fh_family_experience_code_first_database.Migrations
 {
     [DbContext(typeof(AppDbContextDeploy))]
-    [Migration("20220914145342_initail-setup-db")]
-    partial class initailsetupdb
+    [Migration("20220915061133_initial-setup-db")]
+    partial class initialsetupdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -303,7 +303,7 @@ namespace fh_family_experience_code_first_database.Migrations
 
                     b.HasIndex("ServiceId");
 
-                    b.ToTable("HolidaySchedule");
+                    b.ToTable("HolidaySchedules");
                 });
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.Language", b =>

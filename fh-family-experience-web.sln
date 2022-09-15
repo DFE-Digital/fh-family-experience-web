@@ -21,9 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repo", "repo", "{FA7ECFE2-2
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "fh-family-experience-repo-sql", "src\fh-family-experience-repo\fh-family-experience-repo-sql\fh-family-experience-repo-sql.sqlproj", "{90FF7B05-46D4-4554-8C2E-AABDDA23AC77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fh-family-experience-repo-redis", "src\fh-family-experience-repo\fh-family-experience-repo-redis\fh-family-experience-repo-redis.csproj", "{C8C6EB21-23BE-4B69-B075-813469FA98F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fh-family-experience-repo-redis", "src\fh-family-experience-repo\fh-family-experience-repo-redis\fh-family-experience-repo-redis.csproj", "{C8C6EB21-23BE-4B69-B075-813469FA98F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fh-family-experience-code-first-database", "src\fh-family-experience-repo\fh-family-experience-code-first-database\fh-family-experience-code-first-database.csproj", "{10B9B1DF-CC0D-4F7E-AB21-FE733DEBFC91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fh-family-experience-code-first-database", "src\fh-family-experience-repo\fh-family-experience-code-first-database\fh-family-experience-code-first-database.csproj", "{10B9B1DF-CC0D-4F7E-AB21-FE733DEBFC91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,7 +52,6 @@ Global
 		{98E93D50-975E-4ACB-B42C-ED7A3AFF5136}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98E93D50-975E-4ACB-B42C-ED7A3AFF5136}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90FF7B05-46D4-4554-8C2E-AABDDA23AC77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90FF7B05-46D4-4554-8C2E-AABDDA23AC77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90FF7B05-46D4-4554-8C2E-AABDDA23AC77}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{90FF7B05-46D4-4554-8C2E-AABDDA23AC77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90FF7B05-46D4-4554-8C2E-AABDDA23AC77}.Release|Any CPU.Build.0 = Release|Any CPU

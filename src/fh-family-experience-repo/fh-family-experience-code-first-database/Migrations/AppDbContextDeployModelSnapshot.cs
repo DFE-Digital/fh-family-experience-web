@@ -301,7 +301,7 @@ namespace fh_family_experience_code_first_database.Migrations
 
                     b.HasIndex("ServiceId");
 
-                    b.ToTable("HolidaySchedule");
+                    b.ToTable("HolidaySchedules");
                 });
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.Language", b =>

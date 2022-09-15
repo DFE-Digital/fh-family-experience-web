@@ -1,4 +1,6 @@
 ﻿namespace fh_family_experience_sharedkernel.Entities;
+using System.Collections.ObjectModel;
+
 public class Organisation : EntityBase
 {
     public string? Name { get; set; } = null!;
@@ -7,6 +9,6 @@ public class Organisation : EntityBase
     public string? Url { get; set; } = null!;
     public string? Logo { get; set; } = null!;
     public string? LogoUrl { get; set; } = null!;
-    public virtual ICollection<Review>? Reviews { get; set; } = new List<Review>();
-    public virtual ICollection<Service>? Services { get; set; } = new List<Service>();
+    public virtual ICollection<Review>? Reviews { get; set; } = new Collection<Review>();
+    public virtual ICollection<Service>? Services { get; set; } = new Collection<Service>();
 }

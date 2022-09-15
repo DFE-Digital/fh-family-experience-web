@@ -14,7 +14,7 @@ public class AppDbContext : DbContext
     public DbSet<CostOption>? CostOptions => Set<CostOption>();
     public DbSet<Eligibility>? Eligibilities => Set<Eligibility>();
     public DbSet<Funding>? Fundings => Set<Funding>();
-    public DbSet<HolidaySchedule> HolidaySchedule => Set<HolidaySchedule>();
+    public DbSet<HolidaySchedule> HolidaySchedules => Set<HolidaySchedule>();
     public DbSet<Language> Languages => Set<Language>();
     public DbSet<LinkTaxonomy> LinkTaxonomies => Set<LinkTaxonomy>();
     public DbSet<Location> Locations => Set<Location>();

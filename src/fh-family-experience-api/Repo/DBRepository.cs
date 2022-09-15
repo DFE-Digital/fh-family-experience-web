@@ -10,33 +10,22 @@ public class DBRepository : IRepository
     public DBRepository()
     {
         List<Service> services = new();
-
+        List<Review> reviews = new();
 
         using var context = new ApiContext();
         List<Organisation> organisations = new()
                 {
-                new Organisation
-                {
-                    Description="Organisation 1",
-                    Email="org1@org.com",
-                    Name="Name 1",
-                    LogoUrl="www.google.com",
-                    Logo="image1",
-                    Url="www.google.com",
-                    Services =  new List<Service>(),
-                    Reviews = new List<Review>()
-                },
-                new Organisation
-                {
-                    Description="Organisation 2",
-                    Email="org2@org.com",
-                    Name="Name 2",
-                    LogoUrl="www.google.com",
-                    Logo="image2",
-                    Url="www.google.com",
-                    Services =  new List<Service>(),
-                    Reviews = new List<Review>()
-                }
+                    new Organisation
+                    {
+                        Description="Organisation 1",
+                        Email="org1@org.com",
+                        Name="Name 1",
+                        LogoUrl="www.google.com",
+                        Logo="image1",
+                        Url="www.google.com",
+                        Services =  new List<Service>(),
+                        Reviews = new List<Review>()
+                    }
                 };
 
         context.Organisations.AddRange(organisations);

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace fh_family_experience_code_first_database.Migrations
 {
-    public partial class initailsetupdb : Migration
+    public partial class initialsetupdb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -488,7 +488,7 @@ namespace fh_family_experience_code_first_database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolidaySchedule",
+                name: "HolidaySchedules",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -507,19 +507,19 @@ namespace fh_family_experience_code_first_database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolidaySchedule", x => x.Id);
+                    table.PrimaryKey("PK_HolidaySchedules", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HolidaySchedule_Eligibilities_EligibilityId",
+                        name: "FK_HolidaySchedules_Eligibilities_EligibilityId",
                         column: x => x.EligibilityId,
                         principalTable: "Eligibilities",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_HolidaySchedule_ServiceAtLocations_ServiceAtLocationId",
+                        name: "FK_HolidaySchedules_ServiceAtLocations_ServiceAtLocationId",
                         column: x => x.ServiceAtLocationId,
                         principalTable: "ServiceAtLocations",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_HolidaySchedule_Services_ServiceId",
+                        name: "FK_HolidaySchedules_Services_ServiceId",
                         column: x => x.ServiceId,
                         principalTable: "Services",
                         principalColumn: "Id");
@@ -615,18 +615,18 @@ namespace fh_family_experience_code_first_database.Migrations
                 column: "ServiceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HolidaySchedule_EligibilityId",
-                table: "HolidaySchedule",
+                name: "IX_HolidaySchedules_EligibilityId",
+                table: "HolidaySchedules",
                 column: "EligibilityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HolidaySchedule_ServiceAtLocationId",
-                table: "HolidaySchedule",
+                name: "IX_HolidaySchedules_ServiceAtLocationId",
+                table: "HolidaySchedules",
                 column: "ServiceAtLocationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HolidaySchedule_ServiceId",
-                table: "HolidaySchedule",
+                name: "IX_HolidaySchedules_ServiceId",
+                table: "HolidaySchedules",
                 column: "ServiceId");
 
             migrationBuilder.CreateIndex(
@@ -742,7 +742,7 @@ namespace fh_family_experience_code_first_database.Migrations
                 name: "Fundings");
 
             migrationBuilder.DropTable(
-                name: "HolidaySchedule");
+                name: "HolidaySchedules");
 
             migrationBuilder.DropTable(
                 name: "Languages");
