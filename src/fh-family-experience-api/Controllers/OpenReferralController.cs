@@ -3,6 +3,8 @@ namespace fh_family_experience_api.Controllers;
 using fh_family_experience_api.Interfaces;
 using fh_family_experience_sharedkernel.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 [ApiController]
 [Route("[controller]")]
@@ -18,9 +20,9 @@ public class OpenReferralController : ControllerBase
     }
 
     [HttpGet(Name = "GetOrganisations")]
-    public IEnumerable<Organisation> GetOrganisations()
+    public async Task<IEnumerable<Organisation>> GetOrganisationsAsync()
     {
-        List<Organisation>? listOfOrgs = _irepository?.GetOrganisations() ?? new();
+        List<Organisation>? listOfOrgs = await _irepository!.GetOrganisationsAsync();
         return listOfOrgs.AsEnumerable();
     }
 }

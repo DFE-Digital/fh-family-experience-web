@@ -2,10 +2,15 @@
 
 using fh_family_experience_sharedkernel.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 public class AppDbContext : DbContext
 {
     public AppDbContext()
+    {
+    }
+
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
 
@@ -28,4 +33,13 @@ public class AppDbContext : DbContext
     public DbSet<ServiceAtLocation> ServiceAtLocations => Set<ServiceAtLocation>();
     public DbSet<ServiceTaxonomy> ServiceTaxonomies => Set<ServiceTaxonomy>();
     public DbSet<Taxonomy> Taxononmies => Set<Taxonomy>();
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        IConfigurationRoot configuration = new ConfigurationBuilder()
+        .AddJsonFile("appsettings.json").Build();
+
+        optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+        base.OnConfiguring(optionsBuilder);
+    }
 }

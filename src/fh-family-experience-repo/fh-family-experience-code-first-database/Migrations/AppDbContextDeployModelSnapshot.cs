@@ -65,9 +65,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("EligibilityId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime?>("LastUpdated")
                         .HasColumnType("datetime2");
 
@@ -84,8 +81,6 @@ namespace fh_family_experience_code_first_database.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EligibilityId");
 
                     b.HasIndex("ServiceId");
 
@@ -111,9 +106,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("EligibilityId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime?>("LastUpdated")
                         .HasColumnType("datetime2");
 
@@ -137,8 +129,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EligibilityId");
-
                     b.HasIndex("ServiceId");
 
                     b.ToTable("CostOptions");
@@ -150,38 +140,14 @@ namespace fh_family_experience_code_first_database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Accreditations")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("Assured_date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Attending_access")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Attending_type")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Deliverable_type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("EligibilityId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Fees")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("EligibilityTypes")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("LastUpdated")
                         .HasColumnType("datetime2");
@@ -189,26 +155,19 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<string>("LastUpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<string>("LinkId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("OpenReferralOrganisationId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("MaximumAge")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MinimumAge")
+                        .HasColumnType("int");
 
                     b.Property<Guid?>("ServiceId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("EligibilityId");
 
                     b.HasIndex("ServiceId");
 
@@ -227,9 +186,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("EligibilityId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime?>("LastUpdated")
                         .HasColumnType("datetime2");
 
@@ -243,8 +199,6 @@ namespace fh_family_experience_code_first_database.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EligibilityId");
 
                     b.HasIndex("ServiceId");
 
@@ -269,9 +223,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("EligibilityId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -295,8 +246,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EligibilityId");
-
                     b.HasIndex("ServiceAtLocationId");
 
                     b.HasIndex("ServiceId");
@@ -316,9 +265,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("EligibilityId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("LanguagesOtherThanEnglish")
                         .HasColumnType("nvarchar(max)");
 
@@ -332,8 +278,6 @@ namespace fh_family_experience_code_first_database.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EligibilityId");
 
                     b.HasIndex("ServiceId");
 
@@ -554,9 +498,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<DateTime?>("DtStart")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("EligibilityId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int?>("Frequency")
                         .HasColumnType("int");
 
@@ -589,8 +530,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EligibilityId");
-
                     b.HasIndex("ServiceAtLocationId");
 
                     b.HasIndex("ServiceId");
@@ -615,9 +554,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("EligibilityId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastUpdated")
                         .HasColumnType("datetime2");
@@ -645,8 +581,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EligibilityId");
-
                     b.HasIndex("OrganisationId");
 
                     b.HasIndex("ServiceId");
@@ -663,14 +597,14 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<string>("Accreditations")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("Assured_date")
+                    b.Property<DateTime?>("AssuredDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Attending_access")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("AttendingAccess")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Attending_type")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("AttendingType")
+                        .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -678,8 +612,8 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Deliverable_type")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("DeliverableType")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -703,8 +637,8 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<Guid?>("OrganisationId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Url")
                         .HasColumnType("nvarchar(max)");
@@ -731,9 +665,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("EligibilityId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Extent")
                         .HasColumnType("nvarchar(max)");
 
@@ -754,8 +685,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EligibilityId");
-
                     b.HasIndex("ServiceId");
 
                     b.ToTable("ServiceAreas");
@@ -773,9 +702,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("EligibilityId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime?>("LastUpdated")
                         .HasColumnType("datetime2");
 
@@ -789,8 +715,6 @@ namespace fh_family_experience_code_first_database.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EligibilityId");
 
                     b.HasIndex("LocationId");
 
@@ -811,9 +735,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("EligibilityId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime?>("LastUpdated")
                         .HasColumnType("datetime2");
 
@@ -830,8 +751,6 @@ namespace fh_family_experience_code_first_database.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EligibilityId");
 
                     b.HasIndex("ServiceId");
 
@@ -852,6 +771,9 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("EligibilityId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime?>("LastUpdated")
                         .HasColumnType("datetime2");
 
@@ -869,6 +791,8 @@ namespace fh_family_experience_code_first_database.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EligibilityId");
+
                     b.ToTable("Taxononmies");
                 });
 
@@ -881,10 +805,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.Contact", b =>
                 {
-                    b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
-                        .WithMany("Contacts")
-                        .HasForeignKey("EligibilityId");
-
                     b.HasOne("fh_family_experience_sharedkernel.Entities.Service", null)
                         .WithMany("Contacts")
                         .HasForeignKey("ServiceId");
@@ -892,10 +812,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.CostOption", b =>
                 {
-                    b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
-                        .WithMany("CostOptions")
-                        .HasForeignKey("EligibilityId");
-
                     b.HasOne("fh_family_experience_sharedkernel.Entities.Service", null)
                         .WithMany("CostOtions")
                         .HasForeignKey("ServiceId");
@@ -903,10 +819,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.Eligibility", b =>
                 {
-                    b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
-                        .WithMany("Eligibilities")
-                        .HasForeignKey("EligibilityId");
-
                     b.HasOne("fh_family_experience_sharedkernel.Entities.Service", null)
                         .WithMany("Eligibilities")
                         .HasForeignKey("ServiceId");
@@ -914,10 +826,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.Funding", b =>
                 {
-                    b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
-                        .WithMany("Fundings")
-                        .HasForeignKey("EligibilityId");
-
                     b.HasOne("fh_family_experience_sharedkernel.Entities.Service", null)
                         .WithMany("Fundings")
                         .HasForeignKey("ServiceId");
@@ -925,10 +833,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.HolidaySchedule", b =>
                 {
-                    b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
-                        .WithMany("HolidaySchedules")
-                        .HasForeignKey("EligibilityId");
-
                     b.HasOne("fh_family_experience_sharedkernel.Entities.ServiceAtLocation", null)
                         .WithMany("HolidayScheduleCollection")
                         .HasForeignKey("ServiceAtLocationId");
@@ -940,10 +844,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.Language", b =>
                 {
-                    b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
-                        .WithMany("Languages")
-                        .HasForeignKey("EligibilityId");
-
                     b.HasOne("fh_family_experience_sharedkernel.Entities.Service", null)
                         .WithMany("Languages")
                         .HasForeignKey("ServiceId");
@@ -972,10 +872,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.RegularSchedule", b =>
                 {
-                    b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
-                        .WithMany("RegularSchedules")
-                        .HasForeignKey("EligibilityId");
-
                     b.HasOne("fh_family_experience_sharedkernel.Entities.ServiceAtLocation", null)
                         .WithMany("RegularSchedule")
                         .HasForeignKey("ServiceAtLocationId");
@@ -987,10 +883,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.Review", b =>
                 {
-                    b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
-                        .WithMany("Reviews")
-                        .HasForeignKey("EligibilityId");
-
                     b.HasOne("fh_family_experience_sharedkernel.Entities.Organisation", null)
                         .WithMany("Reviews")
                         .HasForeignKey("OrganisationId");
@@ -1013,10 +905,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.ServiceArea", b =>
                 {
-                    b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
-                        .WithMany("ServiceAreas")
-                        .HasForeignKey("EligibilityId");
-
                     b.HasOne("fh_family_experience_sharedkernel.Entities.Service", null)
                         .WithMany("ServiceAreas")
                         .HasForeignKey("ServiceId");
@@ -1024,10 +912,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.ServiceAtLocation", b =>
                 {
-                    b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
-                        .WithMany("ServiceAtLocations")
-                        .HasForeignKey("EligibilityId");
-
                     b.HasOne("fh_family_experience_sharedkernel.Entities.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationId");
@@ -1041,10 +925,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.ServiceTaxonomy", b =>
                 {
-                    b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
-                        .WithMany("Taxonomies")
-                        .HasForeignKey("EligibilityId");
-
                     b.HasOne("fh_family_experience_sharedkernel.Entities.Service", null)
                         .WithMany("ServiceTaxonomies")
                         .HasForeignKey("ServiceId");
@@ -1056,6 +936,13 @@ namespace fh_family_experience_code_first_database.Migrations
                     b.Navigation("Taxonomy");
                 });
 
+            modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.Taxonomy", b =>
+                {
+                    b.HasOne("fh_family_experience_sharedkernel.Entities.Eligibility", null)
+                        .WithMany("Taxonomies")
+                        .HasForeignKey("EligibilityId");
+                });
+
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.Contact", b =>
                 {
                     b.Navigation("Phones");
@@ -1063,26 +950,6 @@ namespace fh_family_experience_code_first_database.Migrations
 
             modelBuilder.Entity("fh_family_experience_sharedkernel.Entities.Eligibility", b =>
                 {
-                    b.Navigation("Contacts");
-
-                    b.Navigation("CostOptions");
-
-                    b.Navigation("Eligibilities");
-
-                    b.Navigation("Fundings");
-
-                    b.Navigation("HolidaySchedules");
-
-                    b.Navigation("Languages");
-
-                    b.Navigation("RegularSchedules");
-
-                    b.Navigation("Reviews");
-
-                    b.Navigation("ServiceAreas");
-
-                    b.Navigation("ServiceAtLocations");
-
                     b.Navigation("Taxonomies");
                 });
 

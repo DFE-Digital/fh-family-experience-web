@@ -1,5 +1,5 @@
 ﻿namespace fh_family_experience_sharedkernel.Entities;
-public class ServiceCatagory : EntityBase
+public class ServiceCategory : EntityBase
 {
     public string? Name { get; private set; } = null!;
 

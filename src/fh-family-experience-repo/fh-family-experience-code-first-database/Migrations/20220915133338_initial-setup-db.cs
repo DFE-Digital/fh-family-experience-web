@@ -50,24 +50,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Taxononmies",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Vocabulary = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Parent = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Taxononmies", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AccessibilityForDisabilities",
                 columns: table => new
                 {
@@ -124,11 +106,11 @@ namespace fh_family_experience_code_first_database.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Accreditations = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Assured_date = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Attending_access = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Attending_type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Deliverable_type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AssuredDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    AttendingAccess = table.Column<int>(type: "int", nullable: true),
+                    AttendingType = table.Column<int>(type: "int", nullable: true),
+                    DeliverableType = table.Column<int>(type: "int", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: true),
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Fees = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -148,75 +130,12 @@ namespace fh_family_experience_code_first_database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LinkTaxonomies",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LinkType = table.Column<int>(type: "int", nullable: true),
-                    LinkId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TaxonomyId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LinkTaxonomies", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_LinkTaxonomies_Taxononmies_TaxonomyId",
-                        column: x => x.TaxonomyId,
-                        principalTable: "Taxononmies",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Eligibilities",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    OpenReferralOrganisationId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Accreditations = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Assured_date = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Attending_access = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Attending_type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Deliverable_type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Fees = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EligibilityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Eligibilities", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Eligibilities_Eligibilities_EligibilityId",
-                        column: x => x.EligibilityId,
-                        principalTable: "Eligibilities",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Eligibilities_Services_ServiceId",
-                        column: x => x.ServiceId,
-                        principalTable: "Services",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Contacts",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EligibilityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -226,11 +145,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Contacts", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Contacts_Eligibilities_EligibilityId",
-                        column: x => x.EligibilityId,
-                        principalTable: "Eligibilities",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Contacts_Services_ServiceId",
                         column: x => x.ServiceId,
@@ -249,7 +163,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     Amount = table.Column<decimal>(type: "decimal(14,2)", precision: 14, scale: 2, nullable: true),
                     AmountDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LinkId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EligibilityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -260,12 +173,32 @@ namespace fh_family_experience_code_first_database.Migrations
                 {
                     table.PrimaryKey("PK_CostOptions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CostOptions_Eligibilities_EligibilityId",
-                        column: x => x.EligibilityId,
-                        principalTable: "Eligibilities",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_CostOptions_Services_ServiceId",
+                        column: x => x.ServiceId,
+                        principalTable: "Services",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Eligibilities",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EligibilityTypes = table.Column<int>(type: "int", nullable: true),
+                    LinkId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MaximumAge = table.Column<int>(type: "int", nullable: true),
+                    MinimumAge = table.Column<int>(type: "int", nullable: true),
+                    ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Eligibilities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Eligibilities_Services_ServiceId",
                         column: x => x.ServiceId,
                         principalTable: "Services",
                         principalColumn: "Id");
@@ -277,7 +210,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Source = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EligibilityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -287,11 +219,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Fundings", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Fundings_Eligibilities_EligibilityId",
-                        column: x => x.EligibilityId,
-                        principalTable: "Eligibilities",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Fundings_Services_ServiceId",
                         column: x => x.ServiceId,
@@ -305,7 +232,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LanguagesOtherThanEnglish = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EligibilityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -315,11 +241,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Languages", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Languages_Eligibilities_EligibilityId",
-                        column: x => x.EligibilityId,
-                        principalTable: "Eligibilities",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Languages_Services_ServiceId",
                         column: x => x.ServiceId,
@@ -339,7 +260,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     Score = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Widget = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EligibilityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     OrganisationId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -349,11 +269,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reviews", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Reviews_Eligibilities_EligibilityId",
-                        column: x => x.EligibilityId,
-                        principalTable: "Eligibilities",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Reviews_Organisations_OrganisationId",
                         column: x => x.OrganisationId,
@@ -375,7 +290,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     Area = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Extent = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Uri = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EligibilityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -385,11 +299,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ServiceAreas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ServiceAreas_Eligibilities_EligibilityId",
-                        column: x => x.EligibilityId,
-                        principalTable: "Eligibilities",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ServiceAreas_Services_ServiceId",
                         column: x => x.ServiceId,
@@ -403,7 +312,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LocationId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    EligibilityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -414,11 +322,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 {
                     table.PrimaryKey("PK_ServiceAtLocations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ServiceAtLocations_Eligibilities_EligibilityId",
-                        column: x => x.EligibilityId,
-                        principalTable: "Eligibilities",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_ServiceAtLocations_Locations_LocationId",
                         column: x => x.LocationId,
                         principalTable: "Locations",
@@ -427,40 +330,6 @@ namespace fh_family_experience_code_first_database.Migrations
                         name: "FK_ServiceAtLocations_Services_ServiceId",
                         column: x => x.ServiceId,
                         principalTable: "Services",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ServiceTaxonomies",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LinkId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TaxonomyId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    EligibilityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ServiceTaxonomies", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ServiceTaxonomies_Eligibilities_EligibilityId",
-                        column: x => x.EligibilityId,
-                        principalTable: "Eligibilities",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_ServiceTaxonomies_Services_ServiceId",
-                        column: x => x.ServiceId,
-                        principalTable: "Services",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_ServiceTaxonomies_Taxononmies_TaxonomyId",
-                        column: x => x.TaxonomyId,
-                        principalTable: "Taxononmies",
                         principalColumn: "Id");
                 });
 
@@ -488,6 +357,30 @@ namespace fh_family_experience_code_first_database.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Taxononmies",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Vocabulary = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Parent = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EligibilityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Taxononmies", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Taxononmies_Eligibilities_EligibilityId",
+                        column: x => x.EligibilityId,
+                        principalTable: "Eligibilities",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HolidaySchedules",
                 columns: table => new
                 {
@@ -497,7 +390,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     ClosesAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     SatrtDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EligibilityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ServiceAtLocationId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -508,11 +400,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_HolidaySchedules", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_HolidaySchedules_Eligibilities_EligibilityId",
-                        column: x => x.EligibilityId,
-                        principalTable: "Eligibilities",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_HolidaySchedules_ServiceAtLocations_ServiceAtLocationId",
                         column: x => x.ServiceAtLocationId,
@@ -541,7 +428,6 @@ namespace fh_family_experience_code_first_database.Migrations
                     ByDay = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ByMonthDay = table.Column<int>(type: "int", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EligibilityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ServiceAtLocationId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -552,11 +438,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RegularSchedules", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RegularSchedules_Eligibilities_EligibilityId",
-                        column: x => x.EligibilityId,
-                        principalTable: "Eligibilities",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_RegularSchedules_ServiceAtLocations_ServiceAtLocationId",
                         column: x => x.ServiceAtLocationId,
@@ -569,15 +450,61 @@ namespace fh_family_experience_code_first_database.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "LinkTaxonomies",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LinkType = table.Column<int>(type: "int", nullable: true),
+                    LinkId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TaxonomyId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LinkTaxonomies", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LinkTaxonomies_Taxononmies_TaxonomyId",
+                        column: x => x.TaxonomyId,
+                        principalTable: "Taxononmies",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ServiceTaxonomies",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LinkId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TaxonomyId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServiceTaxonomies", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ServiceTaxonomies_Services_ServiceId",
+                        column: x => x.ServiceId,
+                        principalTable: "Services",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ServiceTaxonomies_Taxononmies_TaxonomyId",
+                        column: x => x.TaxonomyId,
+                        principalTable: "Taxononmies",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AccessibilityForDisabilities_LocationId",
                 table: "AccessibilityForDisabilities",
                 column: "LocationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Contacts_EligibilityId",
-                table: "Contacts",
-                column: "EligibilityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contacts_ServiceId",
@@ -585,19 +512,9 @@ namespace fh_family_experience_code_first_database.Migrations
                 column: "ServiceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CostOptions_EligibilityId",
-                table: "CostOptions",
-                column: "EligibilityId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_CostOptions_ServiceId",
                 table: "CostOptions",
                 column: "ServiceId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Eligibilities_EligibilityId",
-                table: "Eligibilities",
-                column: "EligibilityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Eligibilities_ServiceId",
@@ -605,19 +522,9 @@ namespace fh_family_experience_code_first_database.Migrations
                 column: "ServiceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fundings_EligibilityId",
-                table: "Fundings",
-                column: "EligibilityId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Fundings_ServiceId",
                 table: "Fundings",
                 column: "ServiceId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_HolidaySchedules_EligibilityId",
-                table: "HolidaySchedules",
-                column: "EligibilityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HolidaySchedules_ServiceAtLocationId",
@@ -628,11 +535,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 name: "IX_HolidaySchedules_ServiceId",
                 table: "HolidaySchedules",
                 column: "ServiceId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Languages_EligibilityId",
-                table: "Languages",
-                column: "EligibilityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Languages_ServiceId",
@@ -655,11 +557,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 column: "LocationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RegularSchedules_EligibilityId",
-                table: "RegularSchedules",
-                column: "EligibilityId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_RegularSchedules_ServiceAtLocationId",
                 table: "RegularSchedules",
                 column: "ServiceAtLocationId");
@@ -668,11 +565,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 name: "IX_RegularSchedules_ServiceId",
                 table: "RegularSchedules",
                 column: "ServiceId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reviews_EligibilityId",
-                table: "Reviews",
-                column: "EligibilityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_OrganisationId",
@@ -685,19 +577,9 @@ namespace fh_family_experience_code_first_database.Migrations
                 column: "ServiceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServiceAreas_EligibilityId",
-                table: "ServiceAreas",
-                column: "EligibilityId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ServiceAreas_ServiceId",
                 table: "ServiceAreas",
                 column: "ServiceId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ServiceAtLocations_EligibilityId",
-                table: "ServiceAtLocations",
-                column: "EligibilityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ServiceAtLocations_LocationId",
@@ -715,11 +597,6 @@ namespace fh_family_experience_code_first_database.Migrations
                 column: "OrganisationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServiceTaxonomies_EligibilityId",
-                table: "ServiceTaxonomies",
-                column: "EligibilityId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ServiceTaxonomies_ServiceId",
                 table: "ServiceTaxonomies",
                 column: "ServiceId");
@@ -728,6 +605,11 @@ namespace fh_family_experience_code_first_database.Migrations
                 name: "IX_ServiceTaxonomies_TaxonomyId",
                 table: "ServiceTaxonomies",
                 column: "TaxonomyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Taxononmies_EligibilityId",
+                table: "Taxononmies",
+                column: "EligibilityId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -778,10 +660,10 @@ namespace fh_family_experience_code_first_database.Migrations
                 name: "Taxononmies");
 
             migrationBuilder.DropTable(
-                name: "Eligibilities");
+                name: "Locations");
 
             migrationBuilder.DropTable(
-                name: "Locations");
+                name: "Eligibilities");
 
             migrationBuilder.DropTable(
                 name: "Services");

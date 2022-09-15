@@ -32,7 +32,7 @@ public class DefaultInfrastructureModule : Module
 
     private static void RegisterCommonDependencies(ContainerBuilder builder)
     {
-        builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IReadRepository<>)).InstancePerLifetimeScope();
+        builder.RegisterType<EfRepository>().As<IReadRepository>().InstancePerLifetimeScope();
     }
 
     private static void RegisterDevelopmentOnlyDependencies(ContainerBuilder builder)

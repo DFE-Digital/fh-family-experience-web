@@ -9,11 +9,11 @@ public class Service : EntityBase
     public string Name { get; set; } = null!;
     public string? Description { get; set; } = null!;
     public string? Accreditations { get; set; } = null!;
-    public DateTime? Assured_date { get; set; } = null!;
-    public string? Attending_access { get; set; } = null!;
-    public string? Attending_type { get; set; } = null!;
-    public string? Deliverable_type { get; set; } = null!;
-    public string? Status { get; set; } = null!;
+    public DateTime? AssuredDate { get; set; } = null!;
+    public AttendingAccess? AttendingAccess { get; set; } = null!;
+    public AttendingTypes? AttendingType { get; set; } = null!;
+    public DeliverableTypes? DeliverableType { get; set; } = null!;
+    public ServiceStatus? Status { get; set; } = null!;
     public string? Url { get; set; } = null!;
     public string? Email { get; set; } = null!;
     public string? Fees { get; set; } = null!;
@@ -24,7 +24,7 @@ public class Service : EntityBase
     public virtual ICollection<RegularSchedule> RegularSchedules { get; set; } = new Collection<RegularSchedule>();
     public virtual ICollection<Review> Reviews { get; set; } = new Collection<Review>();
     public virtual ICollection<Contact> Contacts { get; set; } = new Collection<Contact>();
-    public virtual ICollection<CostOption> CostOtions { get; set; } = new Collection<CostOption>();
+    public virtual ICollection<CostOption> CostOptions { get; set; } = new Collection<CostOption>();
     public virtual ICollection<ServiceArea> ServiceAreas { get; set; } = new Collection<ServiceArea>();
     public virtual ICollection<ServiceAtLocation> ServiceAtLocations { get; set; } = new Collection<ServiceAtLocation>();
     public virtual ICollection<ServiceTaxonomy> ServiceTaxonomies { get; set; } = new Collection<ServiceTaxonomy>();

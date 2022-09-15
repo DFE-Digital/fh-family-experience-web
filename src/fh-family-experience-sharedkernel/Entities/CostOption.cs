@@ -11,5 +11,5 @@ public class CostOption : EntityBase
     [Precision(14, 2)]
     public decimal? Amount { get; set; } = null!;
     public string? AmountDescription { get; set; } = null!;
-    public string? LinkId { get; init; }
+    public string? LinkId { get; set; } = null!;
 }
