@@ -2,6 +2,6 @@
 public class ServiceAtLocation : EntityBase
 {
     public Location? Location { get; set; } = null!;
-    public virtual ICollection<HolidaySchedule>? HolidayScheduleCollection { get; set; } = null!;
-    public virtual ICollection<RegularSchedule>? RegularSchedule { get; set; } = null!;
+    public virtual ICollection<HolidaySchedule>? HolidaySchedules { get; set; } = null!;
+    public virtual ICollection<RegularSchedule>? RegularSchedules { get; set; } = null!;
 }
