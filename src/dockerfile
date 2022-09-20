@@ -1,5 +1,4 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0
-ARG workdir
-COPY /$workdir App/
-WORKDIR /App
+WORKDIR /app
+COPY . .
 ENTRYPOINT ["dotnet", "fh-family-experience-web.dll"]
