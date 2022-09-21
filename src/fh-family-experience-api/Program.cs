@@ -15,7 +15,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddMvc()
      .AddNewtonsoftJson(
-          options => {
+          options =>
+          {
               options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
           });
 

@@ -19,9 +19,9 @@ public class Service : EntityBase
     public string? Fees { get; set; } = null!;
     public virtual ICollection<Eligibility> Eligibilities { get; set; } = new Collection<Eligibility>();
     public virtual ICollection<Funding> Fundings { get; set; } = new Collection<Funding>();
-    //public virtual ICollection<HolidaySchedule> HolidaySchedules { get; set; } = new Collection<HolidaySchedule>();
+    public virtual ICollection<HolidaySchedule> HolidaySchedules { get; set; } = new Collection<HolidaySchedule>();
     public virtual ICollection<Language> Languages { get; set; } = new Collection<Language>();
-    //public virtual ICollection<RegularSchedule> RegularSchedules { get; set; } = new Collection<RegularSchedule>();
+    public virtual ICollection<RegularSchedule> RegularSchedules { get; set; } = new Collection<RegularSchedule>();
     public virtual ICollection<Review> Reviews { get; set; } = new Collection<Review>();
     public virtual ICollection<Contact> Contacts { get; set; } = new Collection<Contact>();
     public virtual ICollection<CostOption> CostOptions { get; set; } = new Collection<CostOption>();
