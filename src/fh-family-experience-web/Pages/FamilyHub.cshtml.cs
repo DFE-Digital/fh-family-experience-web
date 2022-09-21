@@ -1,6 +1,7 @@
 ﻿namespace fh_family_experience_web.Pages;
 
 using fh_family_experience_web.Filters;
+using fh_family_experience_web.Helpers;
 using fh_family_experience_web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -23,27 +24,29 @@ public class FamilyHubModel : PageModel
 
     }
 
-    public IActionResult OnPostAsync()
+    public async Task<IActionResult> OnPostAsync()
     {
-        //if (!ModelState.IsValid)
-        //{
-        //    return Page();
-        //}
+        if (!ModelState.IsValid)
+        {
+            ModelState.AddModelError(nameof(Postcode), "Enter valid postcode.");
+            return Page();
+        }
 
-        //if (!PostcodeValidation.IsPostCode(Postcode ?? string.Empty))
-        //{
-        //    ModelState.AddModelError(nameof(Postcode), "Postcode failed validation.");
-        //    return Page();
-        //}
+        if (!PostcodeValidation.IsPostCode(Postcode ?? string.Empty))
+        {
+            ModelState.AddModelError(nameof(Postcode), "Postcode failed validation.");
+            return Page();
+        }
 
-        //ModelState.Clear();
+        ModelState.Clear();
 
-        //await PostcodeIOPostcodeSearchAsync().ConfigureAwait(false!);
+        await PostcodeIOPostcodeSearchAsync().ConfigureAwait(false!);
 
-        //await OSPlacesPostcodeSearchAsync().ConfigureAwait(false!);
+        if (IOPostcodeDataDisplay!.Status == "200")
+            return new RedirectResult("familyhubresults");
 
-        //return new RedirectResult("familyhubresults");
-        return new RedirectResult("familyhub");
+        ModelState.AddModelError(nameof(Postcode), "Postcode not found.");
+        return Page();
     }
 
     public async Task PostcodeIOPostcodeSearchAsync()
