@@ -10,28 +10,30 @@
         @{
             if (ModelState.Any())
             {
-                <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
-                    <h2 class="govuk-error-summary__title" id="error-summary-title">
-                        There is a problem
-                    </h2>
-                    <div class="govuk-error-summary__body">
-                        <ul class="govuk-list govuk-error-summary__list">
-                            <li>
-                                <a href="#postcode-hub">
-                                    @{
+                    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
+                        <h2 class="govuk-error-summary__title" id="error-summary-title">
+                            There is a problem
+                        </h2>
+                        <div class="govuk-error-summary__body">
+                            <ul class="govuk-list govuk-error-summary__list">
+                                <li>
+                                    <a href="#postcode-hub">
+                                        @{
                                         foreach (var modelError in ModelState)
                                         {
                                             if (modelError.Value.Errors.Count > 0)
                                             {
-                                                <span>@modelError.Value.Errors.FirstOrDefault().ErrorMessage</span>
+                                                        <span>@modelError.Value.Errors.FirstOrDefault().ErrorMessage</span>
                                             }
                                         }
-                                    }
-                                </a>
-                            </li>
-                        </ul>
+                                        }
+                                    </a>
+                                </li>
+                                <li>&nbsp;</li>
+                                <li><span>Check it and enter it again.</span></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
             }
         }
         <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
@@ -88,18 +90,18 @@
                 @{
                     if (ModelState.Any())
                     {
-                        <p id="postcode-error" class="govuk-error-message">
-                            <span class="govuk-visually-hidden">Error:</span>
-                            @{
+                            <p id="postcode-error" class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span>
+                                @{
                                 foreach (var modelError in ModelState)
                                 {
                                     if (modelError.Value.Errors.Count > 0)
                                     {
-                                        <span>@modelError.Value.Errors.FirstOrDefault().ErrorMessage</span>
+                                                <span>@modelError.Value.Errors.FirstOrDefault().ErrorMessage</span>
                                     }
                                 }
-                            }
-                        </p>
+                                }
+                            </p>
                     }
                 }
                 <input class="govuk-input govuk-input--width-10 @(ModelState.Any() ? "govuk-input--error" : "")" id="postcode-hub" type="text" maxlength="8" autocomplete="postal-code" asp-for="@Model.Postcode" value="@Model.Postcode">
