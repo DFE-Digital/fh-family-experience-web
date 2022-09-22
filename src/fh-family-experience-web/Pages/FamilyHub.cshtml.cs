@@ -45,7 +45,7 @@ public class FamilyHubModel : PageModel
         if (IOPostcodeDataDisplay!.Status == "200")
             return new RedirectResult("familyhubresults");
 
-        ModelState.AddModelError(nameof(Postcode), "we could not find this postcode.");
+        ModelState.AddModelError(nameof(Postcode), "We could not find this postcode.");
         return Page();
     }
 
