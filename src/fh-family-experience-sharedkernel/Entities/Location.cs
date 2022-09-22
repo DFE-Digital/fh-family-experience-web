@@ -5,4 +5,6 @@ public class Location : EntityBase
     public string? Description { get; set; } = null!;
     public double? Latitude { get; set; }
     public double? Longitude { get; set; }
+    public virtual ICollection<PhysicalAddress>? PhysicalAddresses { get; set; } = null!;
+    public virtual ICollection<AccessibilityForDisabilities>? AccessibilityForDisabilities { get; set; } = null!;
 }

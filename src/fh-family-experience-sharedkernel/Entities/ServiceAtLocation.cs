@@ -1,6 +1,7 @@
 ﻿namespace fh_family_experience_sharedkernel.Entities;
 public class ServiceAtLocation : EntityBase
 {
-    public virtual List<ServiceItem>? ServiceItemId { get; set; } = null!;
-    public virtual List<Location>? LocationId { get; set; } = null!;
+    public Location? Location { get; set; } = null!;
+    public virtual ICollection<HolidaySchedule>? HolidaySchedules { get; set; } = null!;
+    public virtual ICollection<RegularSchedule>? RegularSchedules { get; set; } = null!;
 }

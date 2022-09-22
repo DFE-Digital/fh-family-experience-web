@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 public class SearchService : ISearchService
 {
-    private readonly IReadRepository<ServiceCatagory> _repository;
+    private readonly IReadRepository _repository;
 
-    public SearchService(IReadRepository<ServiceCatagory> repository)
+    public SearchService(IReadRepository repository)
     {
         _repository = repository;
     }
 
-    public Task<List<ServiceItem>> GetAllItemsAsync(int serviceId, string searchString)
+    public Task<List<ServiceCategory>> GetAllItemsAsync(int serviceId, string searchString)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<ServiceItem>> GetNextItemAsync(int serviceId)
+    public Task<List<ServiceCategory>> GetNextItemAsync(int serviceId)
     {
         throw new NotImplementedException();
     }

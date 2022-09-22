@@ -17,8 +17,20 @@
                     <div class="govuk-error-summary__body">
                         <ul class="govuk-list govuk-error-summary__list">
                             <li>
-                                <a href="#postcode-hub">Please enter valid postcode. e.g. B97 5PE</a>
+                                <a href="#postcode-hub">
+                                    @{
+                                        foreach (var modelError in ModelState)
+                                        {
+                                            if (modelError.Value.Errors.Count > 0)
+                                            {
+                                                <span>@modelError.Value.Errors.FirstOrDefault().ErrorMessage</span>
+                                            }
+                                        }
+                                    }
+                                </a>
                             </li>
+                            <li>&nbsp;</li>
+                            <li><span>Check it and enter it again.</span></li>
                         </ul>
                     </div>
                 </div>
@@ -79,7 +91,16 @@
                     if (ModelState.Any())
                     {
                         <p id="postcode-error" class="govuk-error-message">
-                            <span class="govuk-visually-hidden">Error:</span>The postcode must be valid
+                            <span class="govuk-visually-hidden">Error:</span>
+                            @{
+                                foreach (var modelError in ModelState)
+                                {
+                                    if (modelError.Value.Errors.Count > 0)
+                                    {
+                                        <span>@modelError.Value.Errors.FirstOrDefault().ErrorMessage</span>
+                                    }
+                                }
+                            }
                         </p>
                     }
                 }
