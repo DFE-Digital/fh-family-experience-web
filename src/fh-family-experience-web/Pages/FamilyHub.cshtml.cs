@@ -28,13 +28,13 @@ public class FamilyHubModel : PageModel
     {
         if (!ModelState.IsValid)
         {
-            ModelState.AddModelError(nameof(Postcode), "This is not a valid postcode.");
+            ModelState.AddModelError(nameof(Postcode), "You need to enter a valid postcode, like AA1 1AA.");
             return Page();
         }
 
         if (!PostcodeValidation.IsPostCode(Postcode ?? string.Empty))
         {
-            ModelState.AddModelError(nameof(Postcode), "This is not a valid postcode.");
+            ModelState.AddModelError(nameof(Postcode), "You need to enter a valid postcode, like AA1 1AA.");
             return Page();
         }
 
@@ -45,7 +45,7 @@ public class FamilyHubModel : PageModel
         if (IOPostcodeDataDisplay!.Status == "200")
             return new RedirectResult("familyhubresults");
 
-        ModelState.AddModelError(nameof(Postcode), "We could not find this postcode.");
+        ModelState.AddModelError(nameof(Postcode), "Your postcode is not recognised - try another one.");
         return Page();
     }
 
