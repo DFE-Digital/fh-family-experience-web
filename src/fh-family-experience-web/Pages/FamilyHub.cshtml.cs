@@ -19,6 +19,9 @@ public class FamilyHubModel : PageModel
 
     public PostcodeViewModel? IOPostcodeDataDisplay { get; set; } = null!;
 
+    [TempData]
+    public string LocalAuthorityCode { get; set; }
+
     public void OnGet()
     {
 
@@ -40,10 +43,13 @@ public class FamilyHubModel : PageModel
 
         ModelState.Clear();
 
-        await PostcodeIOPostcodeSearchAsync().ConfigureAwait(false!);
+        await PostcodeIOPostcodeSearchAsync();
 
         if (IOPostcodeDataDisplay!.Status == "200")
+        {
+            LocalAuthorityCode = IOPostcodeDataDisplay.GetLocalAuthority();
             return new RedirectResult("familyhubresults");
+        }
 
         ModelState.AddModelError(nameof(Postcode), "Your postcode is not recognised - try another one.");
         return Page();

@@ -32,7 +32,9 @@ builder.Services.AddRazorPages().AddRazorPagesOptions(
       options.Conventions.AddPageRoute("/FindServicesOverview", "find-services-overview");
       options.Conventions.AddPageRoute("/FindServicesGroupOrActivity", "find-services-group-or-activity");
       options.Conventions.AddPageRoute("/FamilyHRBadJourney", "family-hr-bad-journey");
-  });
+  }).AddSessionStateTempDataProvider();
+
+builder.Services.AddDistributedMemoryCache();
 
 builder.Services.AddSession(options =>
 {
