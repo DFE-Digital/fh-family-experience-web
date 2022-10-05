@@ -41,12 +41,10 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        var orgs = AddOrgs(modelBuilder);
-        AddServices(modelBuilder, orgs);
-
+        SetupServicesDummyData(modelBuilder);
     }
 
-    private List<Organisation> AddOrgs(ModelBuilder modelBuilder)
+    private List<Organisation> SetupServicesDummyData(ModelBuilder modelBuilder)
     {
         var orgs = new List<Organisation> {
             new Organisation
@@ -89,15 +87,20 @@ public class AppDbContext : DbContext
 
     private void AddServices(ModelBuilder modelBuilder, List<Organisation> organisations)
     {
-        foreach (var service in GenerateListOfServices(modelBuilder))
+        foreach (var service in GenerateListOfServices(modelBuilder, organisations[0].Name))
         {
-            //organisations[0].Services.Add(service);
             service.OrganisationId = organisations[0].Id;
+            modelBuilder.Entity<Service>().HasData(service);
+        }
+
+        foreach (var service in GenerateListOfServices(modelBuilder, organisations[1].Name))
+        {
+            service.OrganisationId = organisations[1].Id;
             modelBuilder.Entity<Service>().HasData(service);
         }
     }
 
-    private List<Service> GenerateListOfServices(ModelBuilder modelBuilder)
+    private List<Service> GenerateListOfServices(ModelBuilder modelBuilder, string localAuthorityName)
     {
         List<Service> listOfServices = new();
         List<ServiceAtLocation> listOfServiceAtLocation = GenerateListOfServiceAtLocations(modelBuilder);
@@ -121,13 +124,13 @@ public class AppDbContext : DbContext
             modelBuilder.Entity<Taxonomy>().HasData(t);
         }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 1; i < 4; i++)
         {
             Service service1 = new()
             {
                 Id = Guid.NewGuid(),
                 Email = "service1.email@gmail.com",
-                Name = $"A Helpful Service {i}",
+                Name = $"{localAuthorityName} Service {i}",
                 Description = $"Description of the service {i}",
                 Accreditations = $"Accreditations awarded to the service {i}",
                 AssuredDate = DateTime.Now,
@@ -140,12 +143,7 @@ public class AppDbContext : DbContext
                 CreatedBy = "Joesph Chickweed",
                 CreatedDate = DateTime.UtcNow,
                 LastUpdated = DateTime.UtcNow,
-                LastUpdatedBy = "Seth Nettles",
-                ServiceTaxonomies = new List<ServiceTaxonomy>()
-                {
-
-                },
-                //ServiceAtLocations = new List<ServiceAtLocation>() { listOfServiceAtLocation[i] }
+                LastUpdatedBy = "Seth Nettles"
             };
 
             listOfServiceAtLocation[i].ServiceId = service1.Id;
@@ -180,44 +178,6 @@ public class AppDbContext : DbContext
             {
                 Id = Guid.NewGuid(),
                 LocationId = listOfLocations[i].Id,
-                //HolidaySchedules = new List<HolidaySchedule>()
-                //{
-                //    new()
-                //    {
-                //        Id = Guid.NewGuid(),
-                //        Closed = false,
-                //        OpensAt = DateTime.MinValue,
-                //        ClosesAt = DateTime.MaxValue,
-                //        SatrtDate = DateTime.Now.AddDays(-1),
-                //        EndDate = DateTime.Now.AddDays(1),
-                //        CreatedBy = "Joesph Chickweed",
-                //        CreatedDate = DateTime.UtcNow,
-                //        LastUpdated = DateTime.UtcNow,
-                //        LastUpdatedBy = "Seth Nettles",
-                //    }
-                //},
-                //RegularSchedules = new List<RegularSchedule>()
-                //{
-                //    new()
-                //    {
-                //        Id = Guid.NewGuid(),
-                //        WeekDay = 1,
-                //        OpensAt = DateTime.Now,
-                //        ClosesAt = DateTime.Now,
-                //        ValidFrom = DateTime.Now,
-                //        ValidTo = DateTime.Now,
-                //        DtStart = DateTime.Now,
-                //        Frequency = FrequencyTypes.Weekly,
-                //        Interval = 1,
-                //        ByDay = "MO",
-                //        ByMonthDay = 3,
-                //        Description = "The 2nd Monday of every month from 8:00pm till 12:00pm",
-                //        CreatedBy = "Joesph Chickweed",
-                //        CreatedDate = DateTime.UtcNow,
-                //        LastUpdated = DateTime.UtcNow,
-                //        LastUpdatedBy = "Seth Nettles",
-                //    }
-                //}
             };
 
             listOfServiceAtLocation.Add(serviceAtLocation);
@@ -263,7 +223,7 @@ public class AppDbContext : DbContext
             physicalAddresses.Add(new PhysicalAddress
             {
                 Id = Guid.NewGuid(),
-                Address1 = $"This is Address Line 1 for address {i}",
+                Address1 = $"Hub Street {i}",
                 City = "The City",
                 StateProvince = "The state or province",
                 Postcode = listOfPostcodes[i],
@@ -292,22 +252,6 @@ public class AppDbContext : DbContext
                 Description = $"#{i} A description of this location.",
                 Latitude = rand.NextDouble(),
                 Longitude = rand.NextDouble(),
-                //PhysicalAddresses = new List<PhysicalAddress>()
-                //{
-                //    physicalAddresses[i]
-                //},
-                //AccessibilityForDisabilities = new List<AccessibilityForDisabilities>()
-                //{
-                //    new()
-                //    {
-                //        Id = Guid.NewGuid(),
-                //        Accessibility = $"#{i} Description of assistance or infrastructure that facilitate access to clients with disabilities.",
-                //        CreatedBy = "Joesph Chickweed",
-                //        CreatedDate = DateTime.UtcNow,
-                //        LastUpdated = DateTime.UtcNow,
-                //        LastUpdatedBy = "Seth Nettles",
-                //    }
-                //},
                 CreatedBy = "Joesph Chickweed",
                 CreatedDate = DateTime.UtcNow,
                 LastUpdated = DateTime.UtcNow,
