@@ -12681,7 +12681,7 @@ body > header > div > div.govuk-header__content {
 
 @media (min-width: 40.0625em) {
     .govuk-card {
-        max-height: 380px;
+        max-height: 400px;
         margin-bottom: 30px;
         padding-bottom: 30px;
     }

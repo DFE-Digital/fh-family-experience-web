@@ -57,6 +57,7 @@ public class FamilyHubModel : PageModel
 
     public async Task PostcodeIOPostcodeSearchAsync()
     {
+        TempData["PostCode"] = Postcode;
         string url = $"https://api.postcodes.io/postcodes/{Postcode}";
 
         using var client = new HttpClient();

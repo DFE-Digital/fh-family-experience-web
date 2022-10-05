@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 public class Service : EntityBase
 {
     public virtual Organisation? Organisation { get; set; } = null!;
+
+    public Guid OrganisationId { get; set; }
     public string Name { get; set; } = null!;
     public string? Description { get; set; } = null!;
     public string? Accreditations { get; set; } = null!;

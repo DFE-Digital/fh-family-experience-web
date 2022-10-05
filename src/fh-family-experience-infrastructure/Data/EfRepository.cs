@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 public class EfRepository : IDisposable, IReadRepository
 {
-    private readonly DbContext dbContext;
+    private readonly AppDbContext _dbContext;
 
-    public EfRepository(DbContext dbContext)
+    public EfRepository(AppDbContext dbContext)
     {
-        this.dbContext = dbContext;
+        _dbContext = dbContext;
     }
 
     public void Dispose()
     {
-        dbContext.Dispose();
+        _dbContext.Dispose();
     }
 
     public Task<ServiceCategory> GetByServiceId(string serviceId)
@@ -63,5 +63,28 @@ public class EfRepository : IDisposable, IReadRepository
     public Task<List<ServiceCategory>> GetServicesWithAccessibility(string serviceId)
     {
         throw new NotImplementedException();
+    }
+
+    public async Task<List<Service>> GetFamilyHubsForLocalAuthority(string localAuthorityName)
+    {
+        if(string.IsNullOrWhiteSpace(localAuthorityName))
+            return new List<Service>();
+
+        var org = await _dbContext.Organisations
+            .Include(o => o.Services)
+                .ThenInclude(s => s.ServiceTaxonomies)
+                .ThenInclude(st => st.Taxonomy)
+            .Include(o => o.Services)
+                .ThenInclude(s => s.ServiceAtLocations)
+                .ThenInclude(sl => sl.Location)
+                .ThenInclude(l => l.PhysicalAddresses)            
+            .FirstOrDefaultAsync(o => string.Equals(o.Name, localAuthorityName, StringComparison.InvariantCultureIgnoreCase));
+
+        if (org == null)
+            return new List<Service>();
+
+        var services = org.Services.Where(s => s.ServiceTaxonomies.Any(t => t.Taxonomy != null && t.Taxonomy.Name == "Family Hub")).ToList();
+
+        return services;
     }
 }

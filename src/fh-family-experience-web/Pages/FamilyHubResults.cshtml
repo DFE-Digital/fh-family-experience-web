@@ -3,141 +3,123 @@
 @{
 }
 
-<div class="govuk-grid-row">
+@if (Model.FamilyHubs.Any())
+{
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
+                Your local family hubs
+            </h1>
+
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-4">
+                Get support from @Model.LocalAuthority family hubs.
+            </h2>
+
+        </div>
+    </div>
+
+    <div class="govuk-grid-row govuk-!-margin-top-0 govuk-!-margin-bottom-2">
+        <div class="govuk-grid-column-one-half">
+            <span class="govuk-caption-m govuk-!-margin-bottom-2 govuk-!-margin-top-4">Showing results for <a href="family-hub" class="govuk-link">@Model.PostCode</a></span>
+        </div>
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+            @foreach(var service in Model.FamilyHubs)
+            {
+            <div class="govuk-summary-list__row">
+                <div class="govuk-summary-list__key">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">@service.Name (0.3 miles)</h3>
+                </div>
+            </div>   
+            <dl class="govuk-summary-list govuk-summary-list--no-border">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Where
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        @service.ServiceAtLocations.FirstOrDefault()?.Location?.PhysicalAddresses.FirstOrDefault()?.Address1<br>
+                        @service.ServiceAtLocations.FirstOrDefault()?.Location?.PhysicalAddresses.FirstOrDefault()?.City<br>
+                        @service.ServiceAtLocations.FirstOrDefault()?.Location?.PhysicalAddresses.FirstOrDefault()?.StateProvince @service.ServiceAtLocations.FirstOrDefault()?.Location?.PhysicalAddresses.FirstOrDefault()?.Postcode
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Phone
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        <a href="tel:01617780601">0161 778 0601</a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Email
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        <a href="mailto:@service.Email">@service.Email</a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Website
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        <a href="@service.Url">@service.Name, @service.ServiceAtLocations.FirstOrDefault()?.Location?.PhysicalAddresses.FirstOrDefault()?.City</a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Opening hours
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        Monday to Friday, 9am to 5pm
+                    </dd>
+                </div>
+            </dl>
+            }
+
+            <hr class="govuk-!-margin-bottom-4">
+
+        </div>
+    </div>
+
+    <hr class="govuk-!-margin-bottom-6">
+    <form id="family-hub-results" method="post">
+        <button class="nhsuk-action-link__link">
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="36" height="36">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+            </svg>
+            <span class="nhsuk-action-link__text">Find local services and groups for children, young people and familes.</span>
+        </button>
+    </form>
+} else
+{
+  <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
-            Your nearest family hub or children’s centre is Central Family Hub, @Model.LocalAuthority.
-        </h1>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
+        No results found
+      </h1>
+    
 
-        <h2 class="govuk-heading-m govuk-!-margin-bottom-4">
-            Get support from @Model.LocalAuthority family hubs.
-        </h2>
-
-        <p>
-            Welcome to @Model.LocalAuthority family hubs. We have [LA NumOf Hubs] family hubs and children’s centres spread all across the county,
-            and also offer some services online. Our services work
-            together to promote the health, development and well-being of all children, young people and families in @Model.LocalAuthority.
-        </p>
-        <p>
-            We are here to help you, whether you’re expecting a baby, or you’re the parent or carer of a child or young
-            person up to age 19 (or 25 if they have special educational needs and disabilities).
-        </p>
-
+      <p class="govuk-body">Sorry, there are no family hubs listed in your area yet.</p> 
+      <p class="govuk-body">You can:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            search again for family hubs<a href="family-hub"> with another postcode</a>
+          </li>
+          <li>
+            find <a href="find-services-overview"> local services and groups</a>
+          </li>
+          <li>
+            <a href="https://www.gov.uk/find-local-council"> check your council’s website</a> for your local family support services and groups
+          </li>
+        </ul>
     </div>
-</div>
+  </div>
+}
 
-<div class="govuk-grid-row govuk-!-margin-top-0 govuk-!-margin-bottom-2">
-    <div class="govuk-grid-column-one-half">
-        <span class="govuk-caption-m govuk-!-margin-bottom-2 govuk-!-margin-top-4">Showing results for <a href="find-services-overview" class="govuk-link"></a></span>
-    </div>
-</div>
-
-<div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-
-
-        <div class="govuk-summary-list__row">
-            <div class="govuk-summary-list__key">
-                <p class="govuk-body">1. <a href="https://www.salford.gov.uk/children-and-families/early-help-for-families/family-hubs-childrens-centres/" class="govuk-link govuk-label--m">Central Family Hub, Salford (0.3 miles)</a></p>
-            </div>
-        </div>
-
-        <dl class="govuk-summary-list govuk-summary-list--no-border">
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Where
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    Broughton Hub<br>
-                    50 Rigby Street<br>
-                    Salford M7 4BQ
-                </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Phone
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    0161 778 0601
-                </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Email
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    <a href="https://www.salford.gov.uk/children-and-families/early-help-for-families/family-hubs-childrens-centres/" class="govuk-link govuk-label--s">Family hub online enquiry form</a>
-                </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Opening hours
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    Monday to Friday, 9am to 5pm
-                </dd>
-            </div>
-        </dl>
-
-        <hr class="govuk-!-margin-bottom-6">
-
-        <div class="govuk-summary-list__row">
-            <div class="govuk-summary-list__key">
-                <p class="govuk-body">2. <a href="https://www.salford.gov.uk/children-and-families/early-help-for-families/family-hubs-childrens-centres/" class="govuk-link govuk-label--m">North Family Hub, Swinton (0.9 miles)</a></p>
-            </div>
-        </div>
-
-        <dl class="govuk-summary-list govuk-summary-list--no-border">
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Where
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    Swinton Gateway<br>
-                    100 Chorley Road<br>
-                    Swinton M27 6BP
-                </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Phone
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    0161 778 0495
-                </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Сontact form
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    <a href="https://www.salford.gov.uk/children-and-families/early-help-for-families/family-hubs-childrens-centres/" class="govuk-link govuk-label--s">Family hub online enquiry form</a>
-                </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Opening hours
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    Monday to Thursday, 11am to 4pm
-                </dd>
-            </div>
-        </dl>
-
-    </div>
-</div>
-
-<hr class="govuk-!-margin-bottom-6">
-<form id="family-hub-results" method="post">
-    <button class="nhsuk-action-link__link">
-        <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="36" height="36">
-            <path d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
-        </svg>
-        <span class="nhsuk-action-link__text">Find local services and groups for children, young people and familes.</span>
-    </button>
-    <div class="govuk-!-margin-top-6 govuk-!-margin-left-0">
-        <input type="submit" class="nhsuk-action-link__submit" value="Bad journey" asp-page-handler="badjourney">
-    </div>
-</form>

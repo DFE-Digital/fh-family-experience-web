@@ -13,4 +13,5 @@ public interface IReadRepository
     public Task<List<ServiceCategory>> GetServicesByLongAndLats(double longs, double lats);
     public Task<List<ServiceCategory>> GetServicesByAddress(string postcode, string addressLine1, string city, string country);
     public Task<List<ServiceCategory>> GetServicesWithAccessibility(string serviceId);
+    public Task<List<Service>> GetFamilyHubsForLocalAuthority(string localAuthorityName);
 }

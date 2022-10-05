@@ -37,47 +37,12 @@
             }
         }
         <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
-            What is a family hub?
+            Find a family hub
         </h1>
 
-        <p>Family hubs bring together local services in one place for families.</p>
-        <p>Family hubs offer a wide range of services for the whole family, including:</p>
-
-        <ul class="govuk-list govuk-list--bullet">
-            <li>babies</li>
-            <li>children</li>
-            <li>teenagers up to age 19</li>
-            <li>parents and carers</li>
-            <li>young people with special educational needs and disabilities up to age 25</li>
-        </ul>
-
-        <h2 class="govuk-heading-m govuk-!-margin-bottom-4">
-            What do family hubs offer?
-        </h2>
-
-        <p>Each hub or children’s centre offers a different range of services and activities, for example:</p>
-
-        <ul class="govuk-list govuk-list--bullet">
-            <li>breastfeeding support</li>
-            <li>child development clinics</li>
-            <li>parenting workshops</li>
-            <li>mental health help </li>
-            <li>groups and clubs</li>
-        </ul>
-
-        <h2 class="govuk-heading-m govuk-!-margin-bottom-4">
-            Where are family hubs?
-        </h2>
-
-        <p>
-            There is normally a base for a family hub or children’s centre.
-            Some services may run from different locations, like community centres or health clinics.
-        </p>
-
-        <p>
-            There are family hubs all over England, run by local councils.
-            You can search here to find family hubs near you, or children’s centres, which may offer similar services.
-        </p>
+        <p>If you want to meet other families and find out more about local family support services, your nearest family hub or children’s centre can point you in the right direction.</p>
+        <p>There are family hubs all over England, run by local councils.</p>
+        <p>Search here to find family hubs near you.</p>
 
         <form id="main-content-form" method="post">
             <div class="govuk-form-group @(ModelState.Any() ? "govuk-form-group--error" : "")">
@@ -104,8 +69,11 @@
                 <input class="govuk-input govuk-input--width-10 @(ModelState.Any() ? "govuk-input--error" : "")" id="postcode-hub" type="text" maxlength="8" autocomplete="postal-code" asp-for="@Model.Postcode" value="@Model.Postcode">
             </div>
             <button class="govuk-button" data-module="govuk-button">
-                Search
+                Continue
             </button>
+
+            <p>As this service is new, not all family hubs will be listed. If there are no family hubs listed in your area, you will be signposted to your council website.</p>
+            <div class="govuk-inset-text"> Some family hubs services are only available to local residents.</div>
         </form>
     </div>
 </div>

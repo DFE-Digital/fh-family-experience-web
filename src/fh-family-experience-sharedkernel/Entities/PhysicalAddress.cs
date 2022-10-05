@@ -6,4 +6,5 @@ public class PhysicalAddress : EntityBase
     public string? StateProvince { get; set; } = null!;
     public string? Postcode { get; set; } = null!;
     public string? Country { get; set; } = null!;
+    public Guid LocationId { get; set; }
 }
