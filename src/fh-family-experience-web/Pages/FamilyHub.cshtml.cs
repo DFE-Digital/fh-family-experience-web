@@ -29,14 +29,9 @@ public class FamilyHubModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        if (!ModelState.IsValid)
+        if (!ModelState.IsValid || !PostcodeValidation.IsPostCode(Postcode ?? string.Empty))
         {
-            ModelState.AddModelError(nameof(Postcode), "You need to enter a valid postcode, like AA1 1AA.");
-            return Page();
-        }
-
-        if (!PostcodeValidation.IsPostCode(Postcode ?? string.Empty))
-        {
+            ModelState.Clear();
             ModelState.AddModelError(nameof(Postcode), "You need to enter a valid postcode, like AA1 1AA.");
             return Page();
         }

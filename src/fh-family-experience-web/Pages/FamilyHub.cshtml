@@ -23,14 +23,12 @@
                                         {
                                             if (modelError.Value.Errors.Count > 0)
                                             {
-                                                <span>@modelError.Value.Errors.FirstOrDefault().ErrorMessage</span>
+                                                <span>@modelError.Value.Errors.First().ErrorMessage</span>
                                             }
                                         }
                                     }
                                 </a>
                             </li>
-                            <li>&nbsp;</li>
-                            <li><span>Check it and enter it again.</span></li>
                         </ul>
                     </div>
                 </div>
@@ -59,7 +57,7 @@
                                 {
                                     if (modelError.Value.Errors.Count > 0)
                                     {
-                                        <span>@modelError.Value.Errors.FirstOrDefault().ErrorMessage</span>
+                                        <span>@modelError.Value.Errors.First().ErrorMessage</span>
                                     }
                                 }
                             }
