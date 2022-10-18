@@ -1,8 +1,8 @@
-﻿namespace fh_family_experience_web.Helpers
+﻿namespace fh_family_experience_web.Services
 {
-    public static class LocalAuthorityLookup
+    public class LocalAuthorityCache : ILocalAuthorityCache
     {
-        public static IReadOnlyDictionary<string, string> AuthorityCache = new Dictionary<string, string>
+        private IReadOnlyDictionary<string, string> AuthorityCache = new Dictionary<string, string>
         {
             {"E06000001", "Hartlepool"},
             {"E06000002", "Middlesbrough"},
@@ -384,5 +384,13 @@
             {"W06000023", "Powys,Powys"},
             {"W06000024", "Merthyr Tydfil,Merthyr Tudful"}
         };
+
+        public string GetLocalAuthority(string localAuthorityCode)
+        {
+            if (AuthorityCache.ContainsKey(localAuthorityCode))
+                return AuthorityCache[localAuthorityCode];
+
+            return String.Empty;
+        }
     }
 }

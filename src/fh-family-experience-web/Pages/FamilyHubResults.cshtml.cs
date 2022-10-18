@@ -1,9 +1,9 @@
 namespace fh_family_experience_web.Pages;
 
-using fh_family_experience_sharedkernel.Entities;
-using fh_family_experience_sharedkernel.Interfaces;
+using fh_family_experience_web.Data;
+using fh_family_experience_web.Data.Entities;
 using fh_family_experience_web.Filters;
-using fh_family_experience_web.Helpers;
+using fh_family_experience_web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -11,10 +11,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 public class FamilyHubResultsModel : PageModel
 {
     private readonly IReadRepository _repository;
+    private readonly ILocalAuthorityLookupService _localAuthorityLookupService;
 
-    public FamilyHubResultsModel(IReadRepository repository)
+    public FamilyHubResultsModel(IReadRepository repository, ILocalAuthorityLookupService localAuthorityLookupService)
     {
         _repository = repository;
+        _localAuthorityLookupService = localAuthorityLookupService;
     }
 
     [TempData]
@@ -28,9 +30,11 @@ public class FamilyHubResultsModel : PageModel
     public void OnGet()
     {
         var laCode = TempData["LocalAuthorityCode"];
-        if(laCode != null && !string.IsNullOrWhiteSpace((string)laCode) && LocalAuthorityLookup.AuthorityCache.ContainsKey((string)laCode))
+        var localAuthority = _localAuthorityLookupService.GetLocalAuthorityFromCode((string)laCode);
+
+        if (localAuthority != null)
         {
-            LocalAuthority = LocalAuthorityLookup.AuthorityCache[(string)laCode];
+            LocalAuthority = localAuthority.AuthorityName;
         } else
         {
             LocalAuthority = "Unknown";

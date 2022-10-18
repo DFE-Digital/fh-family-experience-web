@@ -1,12 +1,11 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using fh_family_experience_core;
-using fh_family_experience_core.Services;
-using fh_family_experience_infrastructure;
-using fh_family_experience_infrastructure.Data;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.DependencyInjection;
-using fh_family_experience_core.Interfaces;
+using fh_family_experience_web.Infrastructure.IoC;
+using fh_family_experience_web.Services;
+using fh_family_experience_web.Data;
+using fh_family_experience_web.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,11 +48,16 @@ builder.Services.AddSwaggerGen(c =>
     c.EnableAnnotations();
 });
 
+builder.Services.AddHttpClient();
 
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {
-    containerBuilder.RegisterModule(new DefaultCoreModule());
-    containerBuilder.RegisterModule(new DefaultInfrastructureModule(builder.Environment.IsDevelopment()));
+    //containerBuilder.RegisterModule(new DefaultCoreModule());
+    //containerBuilder.RegisterModule(new DefaultInfrastructureModule(builder.Environment.IsDevelopment()));
+    containerBuilder.RegisterType<PostcodeLookupService>().As<IPostcodeLookupService>().InstancePerLifetimeScope();
+    containerBuilder.RegisterType<LocalAuthorityLookupService>().As<ILocalAuthorityLookupService>().InstancePerLifetimeScope();
+    containerBuilder.RegisterType<LocalAuthorityCache>().As<ILocalAuthorityCache>().SingleInstance();
+    containerBuilder.RegisterType<EfRepository>().As<IReadRepository>().InstancePerLifetimeScope();
 });
 
 var app = builder.Build();

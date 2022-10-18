@@ -20,11 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\fh-family-experience-infrastructure\fh-family-experience-infrastructure.csproj" />
-    <ProjectReference Include="..\..\fh-family-experience-sharedkernel\fh-family-experience-sharedkernel.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
