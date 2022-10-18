@@ -37,7 +37,7 @@ public class FamilyHubModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        if (!ModelState.IsValid && string.IsNullOrWhiteSpace(Postcode))
+        if (!ModelState.IsValid)
         {
             ModelState.Clear();
             ModelState.AddModelError(nameof(Postcode), "You need to enter a postcode, like AA1 1AA.");
