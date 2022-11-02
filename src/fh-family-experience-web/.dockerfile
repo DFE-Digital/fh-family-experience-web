@@ -13,7 +13,7 @@ COPY fh-family-experience-web.sln ./
 COPY ["src/fh-family-experience-api/fh-family-experience-api.csproj", "src/fh-family-experience-api/"]
 COPY ["src/fh-family-experience-core/fh-family-experience-core.csproj", "src/fh-family-experience-core/"]
 COPY ["src/fh-family-experience-infrastructure/fh-family-experience-infrastructure.csproj", "src/fh-family-experience-infrastructure/"]
-COPY ["src/fh-family-experience-web/fh-family-experience-webcsproj", "src/fh-family-experience-web/"]
+COPY ["src/fh-family-experience-web/fh-family-experience-web.csproj", "src/fh-family-experience-web/"]
 
 # Restore Project
 RUN dotnet restore "src/fh-family-experience-web/fh-family-experience-web.csproj"
