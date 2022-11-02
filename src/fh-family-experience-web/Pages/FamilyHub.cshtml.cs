@@ -2,6 +2,7 @@
 using fh_family_experience_web.Helpers;
 using fh_family_experience_web.Models;
 using fh_family_experience_web.Services;
+using fh_family_experience_web.Services.Api;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
@@ -13,11 +14,11 @@ namespace fh_family_experience_web.Pages;
 [PageHistory]
 public class FamilyHubModel : PageModel
 {
-    private readonly IPostcodeLookupService _postcodeLookupService;
+    private readonly IServiceDirectoryApiClient _serviceDirectoryApiClient;
 
-    public FamilyHubModel(IPostcodeLookupService postcodeLookupService)
+    public FamilyHubModel(IServiceDirectoryApiClient serviceDirectoryApiClient)
     {
-        _postcodeLookupService = postcodeLookupService;
+        _serviceDirectoryApiClient = serviceDirectoryApiClient;
     }
 
     [BindProperty]
@@ -53,7 +54,7 @@ public class FamilyHubModel : PageModel
         }
 
         TempData["PostCode"] = Postcode;
-        PostcodeIOResponse = await _postcodeLookupService.GetPostcodeAsync(Postcode);
+        PostcodeIOResponse = await _serviceDirectoryApiClient.GetPostcodeAsync(Postcode!);
 
         if (PostcodeIOResponse!.Status == "200")
         {

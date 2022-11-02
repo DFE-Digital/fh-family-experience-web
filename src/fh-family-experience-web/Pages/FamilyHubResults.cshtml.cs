@@ -4,6 +4,7 @@ using fh_family_experience_web.Data;
 using fh_family_experience_web.Data.Entities;
 using fh_family_experience_web.Filters;
 using fh_family_experience_web.Services;
+using fh_family_experience_web.Services.Api;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -12,11 +13,14 @@ public class FamilyHubResultsModel : PageModel
 {
     private readonly IReadRepository _repository;
     private readonly ILocalAuthorityLookupService _localAuthorityLookupService;
+    private readonly IServiceDirectoryApiClient _serviceDirectoryApi;
 
-    public FamilyHubResultsModel(IReadRepository repository, ILocalAuthorityLookupService localAuthorityLookupService)
+    public FamilyHubResultsModel(IReadRepository repository, ILocalAuthorityLookupService localAuthorityLookupService, 
+        IServiceDirectoryApiClient serviceDirectoryApi)
     {
         _repository = repository;
         _localAuthorityLookupService = localAuthorityLookupService;
+        _serviceDirectoryApi = serviceDirectoryApi;
     }
 
     [TempData]

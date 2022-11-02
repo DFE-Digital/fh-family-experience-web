@@ -6,6 +6,7 @@ using fh_family_experience_web.Infrastructure.IoC;
 using fh_family_experience_web.Services;
 using fh_family_experience_web.Data;
 using fh_family_experience_web.Infrastructure;
+using fh_family_experience_web.Services.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,16 +49,16 @@ builder.Services.AddSwaggerGen(c =>
     c.EnableAnnotations();
 });
 
-builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<ServiceDirectoryApiClient>();
 
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {
     //containerBuilder.RegisterModule(new DefaultCoreModule());
     //containerBuilder.RegisterModule(new DefaultInfrastructureModule(builder.Environment.IsDevelopment()));
-    containerBuilder.RegisterType<PostcodeLookupService>().As<IPostcodeLookupService>().InstancePerLifetimeScope();
     containerBuilder.RegisterType<LocalAuthorityLookupService>().As<ILocalAuthorityLookupService>().InstancePerLifetimeScope();
     containerBuilder.RegisterType<LocalAuthorityCache>().As<ILocalAuthorityCache>().SingleInstance();
     containerBuilder.RegisterType<EfRepository>().As<IReadRepository>().InstancePerLifetimeScope();
+    containerBuilder.RegisterType<ServiceDirectoryApiClient>().As<IServiceDirectoryApiClient>().InstancePerLifetimeScope();
 });
 
 var app = builder.Build();
