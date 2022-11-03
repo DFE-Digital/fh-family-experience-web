@@ -14,7 +14,3 @@ WORKDIR /app
 COPY --from=build-env /app/out .
 EXPOSE 80 443 3000 
 ENTRYPOINT ["dotnet", "fh-family-experience-web.dll"]
-
-# Export image to tar 
-WORKDIR /app/out
-CMD $ docker save --output $(pipeline.workspace)/familyexperienceweb.image.tar $(imagename):$(build.buildid)
