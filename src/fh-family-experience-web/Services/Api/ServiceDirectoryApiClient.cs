@@ -1,4 +1,5 @@
-﻿using fh_family_experience_web.Models;
+﻿using fh_family_experience_web.Data.Entities;
+using fh_family_experience_web.Models;
 using Newtonsoft.Json;
 using System.Net.Http;
 
@@ -41,6 +42,22 @@ namespace fh_family_experience_web.Services.Api
                 string content = await queryResponse.Content.ReadAsStringAsync().ConfigureAwait(!false) ?? string.Empty;
 
                 var result = JsonConvert.DeserializeObject<PostcodeIOResponse>(content);
+
+                return result!;
+            }
+        }
+
+        public async Task<IList<Service>> GetFamilyHubsForLocalAuthorityAsync(string postcode, string localAuthorityCode, double longtitude, double latitude)
+        {
+            var uriSuffix = $"search?postcode={Uri.EscapeDataString(postcode)}&laCode={Uri.EscapeDataString(localAuthorityCode)}&longtitude={longtitude}&latitude={latitude}";
+            using (var queryResponse = await _client.GetAsync(uriSuffix))
+            {
+                if (!queryResponse.IsSuccessStatusCode)
+                    throw new Exception($"Failed to query Service Directory API for Family Hubs for postcode {postcode}, laCode {localAuthorityCode}, longtitude {longtitude}, latitude {latitude}. HTTP Staus Code = {queryResponse.StatusCode}");
+
+                string content = await queryResponse.Content.ReadAsStringAsync().ConfigureAwait(!false) ?? string.Empty;
+
+                var result = JsonConvert.DeserializeObject<IList<Service>>(content);
 
                 return result!;
             }

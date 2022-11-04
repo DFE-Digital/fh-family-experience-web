@@ -5,8 +5,8 @@ using fh_family_experience_web.Services;
 using fh_family_experience_web.Services.Api;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace fh_family_experience_web.Pages;
@@ -55,6 +55,8 @@ public class FamilyHubModel : PageModel
 
         TempData["PostCode"] = Postcode;
         PostcodeIOResponse = await _serviceDirectoryApiClient.GetPostcodeAsync(Postcode!);
+
+        TempData["postcodeIoResponse"] = JsonSerializer.Serialize(PostcodeIOResponse);
 
         if (PostcodeIOResponse!.Status == "200")
         {

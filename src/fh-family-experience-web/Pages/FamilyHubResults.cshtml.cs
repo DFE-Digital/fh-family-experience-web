@@ -3,10 +3,12 @@ namespace fh_family_experience_web.Pages;
 using fh_family_experience_web.Data;
 using fh_family_experience_web.Data.Entities;
 using fh_family_experience_web.Filters;
+using fh_family_experience_web.Models;
 using fh_family_experience_web.Services;
 using fh_family_experience_web.Services.Api;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Text.Json;
 
 [PageHistory]
 public class FamilyHubResultsModel : PageModel
@@ -16,11 +18,13 @@ public class FamilyHubResultsModel : PageModel
     private readonly IServiceDirectoryApiClient _serviceDirectoryApi;
 
     public FamilyHubResultsModel(IReadRepository repository, ILocalAuthorityLookupService localAuthorityLookupService, 
-        IServiceDirectoryApiClient serviceDirectoryApi)
+        IServiceDirectoryApiClient serviceDirectoryApiClient)
     {
         _repository = repository;
         _localAuthorityLookupService = localAuthorityLookupService;
-        _serviceDirectoryApi = serviceDirectoryApi;
+        _serviceDirectoryApi = serviceDirectoryApiClient;
+
+        FamilyHubs = new List<Service>();
     }
 
     [TempData]
@@ -29,11 +33,17 @@ public class FamilyHubResultsModel : PageModel
     [TempData]
     public string PostCode { get; set; } = "";
 
-    public List<Service> FamilyHubs { get; set; }
+    public IList<Service> FamilyHubs { get; set; }
 
-    public void OnGet()
+    public async Task OnGet()
     {
-        var laCode = TempData["LocalAuthorityCode"];
+        var postcodeIoResponse = JsonSerializer.Deserialize<PostcodeIOResponse>(TempData["postcodeIoResponse"] as string);
+
+        var laCode = TempData["LocalAuthorityCode"] as string;
+        double longitude = 0.0;
+        double latitude = 0.0;
+        var postcode = TempData["Postcode"];
+
         var localAuthority = _localAuthorityLookupService.GetLocalAuthorityFromCode((string)laCode);
 
         if (localAuthority != null)
@@ -44,7 +54,7 @@ public class FamilyHubResultsModel : PageModel
             LocalAuthority = "Unknown";
         }
 
-        FamilyHubs = _repository.GetFamilyHubsForLocalAuthority(LocalAuthority).Result;
+        FamilyHubs = await _serviceDirectoryApi.GetFamilyHubsForLocalAuthorityAsync(PostCode, laCode, longitude, latitude);
     }
 
     public IActionResult OnPost()

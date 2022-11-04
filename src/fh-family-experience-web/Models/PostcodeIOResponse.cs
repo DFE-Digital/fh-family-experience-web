@@ -8,6 +8,7 @@
     public class PostcodeIOResponse
     {
         public string Status { get; set; } = null!;
+        public string PostCode { get; set; } = null!;
         public PostcodeIOResult? Result { get; set; }
 
         public string GetLocalAuthorityCode()
