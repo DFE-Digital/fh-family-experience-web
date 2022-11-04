@@ -1,5 +1,5 @@
-﻿using fh_family_experience_web.Data.Entities;
-using fh_family_experience_web.Models;
+﻿using FamilyHubs.ServiceDirectory.Shared.Models.Api.OpenReferralServices;
+using FamilyHubs.ServiceDirectory.Shared.Models.Api.Postcodes;
 using Newtonsoft.Json;
 using System.Net.Http;
 
@@ -32,7 +32,7 @@ namespace fh_family_experience_web.Services.Api
             _client.DefaultRequestHeaders.Clear();
         }
 
-        public async Task<PostcodeIOResponse> GetPostcodeAsync(string postcode)
+        public async Task<PostcodeIOResponseDto> GetPostcodeAsync(string postcode)
         {
             using (var queryResponse = await _client.GetAsync($"postcode/{Uri.EscapeDataString(postcode)}"))
             {
@@ -41,15 +41,15 @@ namespace fh_family_experience_web.Services.Api
 
                 string content = await queryResponse.Content.ReadAsStringAsync().ConfigureAwait(!false) ?? string.Empty;
 
-                var result = JsonConvert.DeserializeObject<PostcodeIOResponse>(content);
+                var result = JsonConvert.DeserializeObject<PostcodeIOResponseDto>(content);
 
                 return result!;
             }
         }
 
-        public async Task<IList<Service>> GetFamilyHubsForLocalAuthorityAsync(string postcode, string localAuthorityCode, double longtitude, double latitude)
+        public async Task<IList<OpenReferralServiceDto>> GetFamilyHubsForLocalAuthorityAsync(string postcode, string localAuthorityCode, double longtitude, double latitude)
         {
-            var uriSuffix = $"search?postcode={Uri.EscapeDataString(postcode)}&laCode={Uri.EscapeDataString(localAuthorityCode)}&longtitude={longtitude}&latitude={latitude}";
+            var uriSuffix = $"search?postcode={Uri.EscapeDataString(postcode)}&districtCode={Uri.EscapeDataString(localAuthorityCode)}&longitude={longtitude}&latitude={latitude}";
             using (var queryResponse = await _client.GetAsync(uriSuffix))
             {
                 if (!queryResponse.IsSuccessStatusCode)
@@ -57,7 +57,7 @@ namespace fh_family_experience_web.Services.Api
 
                 string content = await queryResponse.Content.ReadAsStringAsync().ConfigureAwait(!false) ?? string.Empty;
 
-                var result = JsonConvert.DeserializeObject<IList<Service>>(content);
+                var result = JsonConvert.DeserializeObject<IList<OpenReferralServiceDto>>(content);
 
                 return result!;
             }

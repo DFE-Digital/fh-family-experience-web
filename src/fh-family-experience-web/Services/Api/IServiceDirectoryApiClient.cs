@@ -1,12 +1,12 @@
-﻿using fh_family_experience_web.Data.Entities;
-using fh_family_experience_web.Models;
+﻿using FamilyHubs.ServiceDirectory.Shared.Models.Api.OpenReferralServices;
+using FamilyHubs.ServiceDirectory.Shared.Models.Api.Postcodes;
 
 namespace fh_family_experience_web.Services.Api
 {
     public interface IServiceDirectoryApiClient
     {
-        Task<PostcodeIOResponse> GetPostcodeAsync(string postcode);
+        Task<PostcodeIOResponseDto> GetPostcodeAsync(string postcode);
 
-        Task<IList<Service>> GetFamilyHubsForLocalAuthorityAsync(string postcode, string localAuthorityCode, double longtitude, double latitude);
+        Task<IList<OpenReferralServiceDto>> GetFamilyHubsForLocalAuthorityAsync(string postcode, string localAuthorityCode, double longtitude, double latitude);
     }
 }

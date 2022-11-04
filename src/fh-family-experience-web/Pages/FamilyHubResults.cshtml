@@ -41,9 +41,9 @@
                         Where
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        @service.ServiceAtLocations.FirstOrDefault()?.Location?.PhysicalAddresses.FirstOrDefault()?.Address1<br>
-                        @service.ServiceAtLocations.FirstOrDefault()?.Location?.PhysicalAddresses.FirstOrDefault()?.City<br>
-                        @service.ServiceAtLocations.FirstOrDefault()?.Location?.PhysicalAddresses.FirstOrDefault()?.StateProvince @service.ServiceAtLocations.FirstOrDefault()?.Location?.PhysicalAddresses.FirstOrDefault()?.Postcode
+                        @service.Service_at_locations.FirstOrDefault()?.Location?.Physical_addresses.FirstOrDefault()?.Address_1<br>
+                        @service.Service_at_locations.FirstOrDefault()?.Location?.Physical_addresses.FirstOrDefault()?.City<br>
+                        @service.Service_at_locations.FirstOrDefault()?.Location?.Physical_addresses.FirstOrDefault()?.State_province @service.Service_at_locations.FirstOrDefault()?.Location?.Physical_addresses.FirstOrDefault()?.Postal_code
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -67,7 +67,7 @@
                         Website
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        <a href="@service.Url">@service.Name, @service.ServiceAtLocations.FirstOrDefault()?.Location?.PhysicalAddresses.FirstOrDefault()?.City</a>
+                            <a href="@service.Url">@service.Name, @service.Service_at_locations.FirstOrDefault()?.Location?.Physical_addresses.FirstOrDefault()?.City</a>
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">

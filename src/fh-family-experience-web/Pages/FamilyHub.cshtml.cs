@@ -1,6 +1,6 @@
-﻿using fh_family_experience_web.Filters;
+﻿using FamilyHubs.ServiceDirectory.Shared.Models.Api.Postcodes;
+using fh_family_experience_web.Filters;
 using fh_family_experience_web.Helpers;
-using fh_family_experience_web.Models;
 using fh_family_experience_web.Services;
 using fh_family_experience_web.Services.Api;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +26,7 @@ public class FamilyHubModel : PageModel
     [Required]
     public string? Postcode { get; set; } = null!;
 
-    public PostcodeIOResponse? PostcodeIOResponse { get; set; } = null!;
+    public PostcodeIOResponseDto? PostcodeIOResponse { get; set; } = null!;
 
     [TempData]
     public string LocalAuthorityCode { get; set; }
@@ -60,7 +60,7 @@ public class FamilyHubModel : PageModel
 
         if (PostcodeIOResponse!.Status == "200")
         {
-            LocalAuthorityCode = PostcodeIOResponse.GetLocalAuthorityCode();
+            LocalAuthorityCode = PostcodeIOResponse.Result.GetLocalAuthorityCode();
             return new RedirectResult("familyhubresults");
         }
 
