@@ -21,7 +21,7 @@
 
     <div class="govuk-grid-row govuk-!-margin-top-0 govuk-!-margin-bottom-2">
         <div class="govuk-grid-column-one-half">
-            <span class="govuk-caption-m govuk-!-margin-bottom-2 govuk-!-margin-top-4">Showing results for <a href="family-hub" class="govuk-link">@Model.PostCode</a></span>
+            <span class="govuk-caption-m govuk-!-margin-bottom-2 govuk-!-margin-top-4">Showing results for <a href="family-hub" class="govuk-link">@Model.Postcode</a></span>
         </div>
     </div>
 
@@ -41,9 +41,9 @@
                         Where
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        @service.Service_at_locations.FirstOrDefault()?.Location?.Physical_addresses.FirstOrDefault()?.Address_1<br>
-                        @service.Service_at_locations.FirstOrDefault()?.Location?.Physical_addresses.FirstOrDefault()?.City<br>
-                        @service.Service_at_locations.FirstOrDefault()?.Location?.Physical_addresses.FirstOrDefault()?.State_province @service.Service_at_locations.FirstOrDefault()?.Location?.Physical_addresses.FirstOrDefault()?.Postal_code
+                        @service?.Service_at_locations?.FirstOrDefault()?.Location?.Physical_addresses?.FirstOrDefault()?.Address_1<br>
+                        @service?.Service_at_locations?.FirstOrDefault()?.Location?.Physical_addresses?.FirstOrDefault()?.City<br>
+                        @service?.Service_at_locations?.FirstOrDefault()?.Location?.Physical_addresses?.FirstOrDefault()?.State_province @service?.Service_at_locations?.FirstOrDefault()?.Location?.Physical_addresses?.FirstOrDefault()?.Postal_code
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -59,7 +59,7 @@
                         Email
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        <a href="mailto:@service.Email">@service.Email</a>
+                        <a href="mailto:@service?.Email">@service?.Email</a>
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -67,7 +67,7 @@
                         Website
                     </dt>
                     <dd class="govuk-summary-list__value">
-                            <a href="@service.Url">@service.Name, @service.Service_at_locations.FirstOrDefault()?.Location?.Physical_addresses.FirstOrDefault()?.City</a>
+                            <a href="@service?.Url">@service?.Name, @service?.Service_at_locations?.FirstOrDefault()?.Location?.Physical_addresses?.FirstOrDefault()?.City</a>
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">

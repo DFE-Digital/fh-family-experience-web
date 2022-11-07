@@ -19,6 +19,8 @@ public class FamilyHubModel : PageModel
     public FamilyHubModel(IServiceDirectoryApiClient serviceDirectoryApiClient)
     {
         _serviceDirectoryApiClient = serviceDirectoryApiClient;
+
+        LocalAuthorityCode = String.Empty;
     }
 
     [BindProperty]
@@ -56,11 +58,14 @@ public class FamilyHubModel : PageModel
         TempData["PostCode"] = Postcode;
         PostcodeIOResponse = await _serviceDirectoryApiClient.GetPostcodeAsync(Postcode!);
 
+        if (PostcodeIOResponse is null)
+            throw new Exception("Failed to get response from Service Directory API");
+
         TempData["postcodeIoResponse"] = JsonSerializer.Serialize(PostcodeIOResponse);
 
         if (PostcodeIOResponse!.Status == "200")
         {
-            LocalAuthorityCode = PostcodeIOResponse.Result.GetLocalAuthorityCode();
+            LocalAuthorityCode = PostcodeIOResponse.Result!.GetLocalAuthorityCode();
             return new RedirectResult("familyhubresults");
         }
 

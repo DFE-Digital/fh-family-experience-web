@@ -28,20 +28,24 @@ public class FamilyHubResultsModel : PageModel
     public string LocalAuthority { get; set; } = "";
 
     [TempData]
-    public string PostCode { get; set; } = "";
+    public string Postcode { get; set; } = "";
 
     public IList<OpenReferralServiceDto> FamilyHubs { get; set; }
 
     public async Task OnGet()
     {
-        var postcodeIoResponse = JsonSerializer.Deserialize<PostcodeIOResponseDto>(TempData["postcodeIoResponse"] as string);
+        var response = TempData["postcodeIoResponse"] as string;
+        if (response is null)
+            throw new Exception("Missig PostcodeIOResponse");
 
-        var laCode = TempData["LocalAuthorityCode"] as string;
+        var postcodeIoResponse = JsonSerializer.Deserialize<PostcodeIOResponseDto>(response);
+
+        var laCode = (TempData["LocalAuthorityCode"] as string) ?? "";
         double longitude = postcodeIoResponse?.Result?.Longitude ?? 0.0;
         double latitude = postcodeIoResponse?.Result?.Latitude ?? 0.0;
-        var postcode = TempData["Postcode"];
+        Postcode = (TempData["Postcode"] as string) ?? "";
 
-        var localAuthority = _localAuthorityLookupService.GetLocalAuthorityFromCode((string)laCode);
+        var localAuthority = _localAuthorityLookupService.GetLocalAuthorityFromCode(laCode);
 
         if (localAuthority != null)
         {
@@ -51,7 +55,7 @@ public class FamilyHubResultsModel : PageModel
             LocalAuthority = "Unknown";
         }
 
-        FamilyHubs = await _serviceDirectoryApi.GetFamilyHubsForLocalAuthorityAsync(PostCode, laCode, longitude, latitude);
+        FamilyHubs = await _serviceDirectoryApi.GetFamilyHubsForLocalAuthorityAsync(Postcode, laCode, longitude, latitude);
     }
 
     public IActionResult OnPost()
