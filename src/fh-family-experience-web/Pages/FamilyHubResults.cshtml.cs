@@ -6,12 +6,12 @@ using fh_family_experience_web.Services.Api;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
-using FamilyHubs.ServiceDirectory.Shared.Models.Api.Postcodes;
 using FamilyHubs.ServiceDirectory.Shared.Models.Api.OpenReferralServices;
 using FamilyHubs.ServiceDirectory.Shared.Models.Api.OpenReferralLocations;
 using FamilyHubs.ServiceDirectory.Shared.Models;
 using fh_family_experience_web.ViewModels;
 using fh_family_experience_web.ViewModels.Extensions;
+using fh_family_experience_web.Services.Postcodes.Model;
 
 [PageHistory]
 public class FamilyHubResultsModel : PageModel
@@ -42,7 +42,7 @@ public class FamilyHubResultsModel : PageModel
         if (response is null)
             throw new Exception("Missig PostcodeIOResponse");
 
-        var postcodeIoResponse = JsonSerializer.Deserialize<PostcodeIOResponseDto>(response);
+        var postcodeIoResponse = JsonSerializer.Deserialize<PostcodeIOResponse>(response);
 
         var laCode = (TempData["LocalAuthorityCode"] as string) ?? "";
         double longitude = postcodeIoResponse?.Result?.Longitude ?? 0.0;
@@ -59,7 +59,7 @@ public class FamilyHubResultsModel : PageModel
             LocalAuthority = "Unknown";
         }
 
-        var hubsDto = await _serviceDirectoryApi.GetFamilyHubsForLocalAuthorityAsync(Postcode, laCode, longitude, latitude);
+        var hubsDto = await _serviceDirectoryApi.GetFamilyHubsForLocalAuthorityAsync(laCode, longitude, latitude);
 
         FamilyHubs = hubsDto.ToFamilyHubViewModels();
     }

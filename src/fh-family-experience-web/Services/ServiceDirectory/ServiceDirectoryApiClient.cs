@@ -1,9 +1,7 @@
 ﻿using FamilyHubs.ServiceDirectory.Shared.Models.Api.OpenReferralLocations;
 using FamilyHubs.ServiceDirectory.Shared.Models;
 using FamilyHubs.ServiceDirectory.Shared.Models.Api.OpenReferralServices;
-using FamilyHubs.ServiceDirectory.Shared.Models.Api.Postcodes;
 using Newtonsoft.Json;
-using System.Net.Http;
 
 namespace fh_family_experience_web.Services.Api
 {
@@ -34,28 +32,13 @@ namespace fh_family_experience_web.Services.Api
             _client.DefaultRequestHeaders.Clear();
         }
 
-        public async Task<PostcodeIOResponseDto> GetPostcodeAsync(string postcode)
+        public async Task<List<Either<OpenReferralServiceDto, OpenReferralLocationDto, double>>> GetFamilyHubsForLocalAuthorityAsync(string localAuthorityCode, double longtitude, double latitude)
         {
-            using (var queryResponse = await _client.GetAsync($"postcode/{Uri.EscapeDataString(postcode)}"))
-            {
-                if (queryResponse.StatusCode != System.Net.HttpStatusCode.OK && queryResponse.StatusCode != System.Net.HttpStatusCode.NotFound)
-                    throw new Exception($"Failed to query API for postcode {postcode}. HTTP Staus Code = {queryResponse.StatusCode}");
-
-                string content = await queryResponse.Content.ReadAsStringAsync().ConfigureAwait(!false) ?? string.Empty;
-
-                var result = JsonConvert.DeserializeObject<PostcodeIOResponseDto>(content);
-
-                return result!;
-            }
-        }
-
-        public async Task<List<Either<OpenReferralServiceDto, OpenReferralLocationDto, double>>> GetFamilyHubsForLocalAuthorityAsync(string postcode, string localAuthorityCode, double longtitude, double latitude)
-        {
-            var uriSuffix = $"search?postcode={Uri.EscapeDataString(postcode)}&districtCode={Uri.EscapeDataString(localAuthorityCode)}&longitude={longtitude}&latitude={latitude}";
+            var uriSuffix = $"search?districtCode={Uri.EscapeDataString(localAuthorityCode)}&longitude={longtitude}&latitude={latitude}";
             using (var queryResponse = await _client.GetAsync(uriSuffix))
             {
                 if (!queryResponse.IsSuccessStatusCode)
-                    throw new Exception($"Failed to query Service Directory API for Family Hubs for postcode {postcode}, laCode {localAuthorityCode}, longtitude {longtitude}, latitude {latitude}. HTTP Staus Code = {queryResponse.StatusCode}");
+                    throw new Exception($"Failed to query Service Directory API for Family Hubs for laCode {localAuthorityCode}, longtitude {longtitude}, latitude {latitude}. HTTP Staus Code = {queryResponse.StatusCode}");
 
                 string content = await queryResponse.Content.ReadAsStringAsync().ConfigureAwait(!false) ?? string.Empty;
 

@@ -4,6 +4,7 @@ using Microsoft.OpenApi.Models;
 using fh_family_experience_web.Services;
 using fh_family_experience_web.Infrastructure;
 using fh_family_experience_web.Services.Api;
+using fh_family_experience_web.Services.Postcodes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +47,7 @@ builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
     containerBuilder.RegisterType<LocalAuthorityLookupService>().As<ILocalAuthorityLookupService>().InstancePerLifetimeScope();
     containerBuilder.RegisterType<LocalAuthorityCache>().As<ILocalAuthorityCache>().SingleInstance();
     containerBuilder.RegisterType<ServiceDirectoryApiClient>().As<IServiceDirectoryApiClient>().InstancePerLifetimeScope();
+    containerBuilder.RegisterType<PostcodeLookupService>().As<IPostcodeLookupService>().InstancePerLifetimeScope();
 });
 
 var app = builder.Build();
