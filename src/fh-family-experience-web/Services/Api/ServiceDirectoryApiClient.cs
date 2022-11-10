@@ -1,4 +1,6 @@
-﻿using FamilyHubs.ServiceDirectory.Shared.Models.Api.OpenReferralServices;
+﻿using FamilyHubs.ServiceDirectory.Shared.Models.Api.OpenReferralLocations;
+using FamilyHubs.ServiceDirectory.Shared.Models;
+using FamilyHubs.ServiceDirectory.Shared.Models.Api.OpenReferralServices;
 using FamilyHubs.ServiceDirectory.Shared.Models.Api.Postcodes;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -47,7 +49,7 @@ namespace fh_family_experience_web.Services.Api
             }
         }
 
-        public async Task<IList<OpenReferralServiceDto>> GetFamilyHubsForLocalAuthorityAsync(string postcode, string localAuthorityCode, double longtitude, double latitude)
+        public async Task<List<Either<OpenReferralServiceDto, OpenReferralLocationDto, double>>> GetFamilyHubsForLocalAuthorityAsync(string postcode, string localAuthorityCode, double longtitude, double latitude)
         {
             var uriSuffix = $"search?postcode={Uri.EscapeDataString(postcode)}&districtCode={Uri.EscapeDataString(localAuthorityCode)}&longitude={longtitude}&latitude={latitude}";
             using (var queryResponse = await _client.GetAsync(uriSuffix))
@@ -57,7 +59,7 @@ namespace fh_family_experience_web.Services.Api
 
                 string content = await queryResponse.Content.ReadAsStringAsync().ConfigureAwait(!false) ?? string.Empty;
 
-                var result = JsonConvert.DeserializeObject<IList<OpenReferralServiceDto>>(content);
+                var result = JsonConvert.DeserializeObject<List<Either<OpenReferralServiceDto, OpenReferralLocationDto, double>>>(content);
 
                 return result!;
             }

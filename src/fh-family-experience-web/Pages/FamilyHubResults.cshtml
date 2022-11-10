@@ -28,11 +28,11 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
 
-            @foreach(var service in Model.FamilyHubs)
+            @foreach(var hub in Model.FamilyHubs)
             {
             <div class="govuk-summary-list__row">
                 <div class="govuk-summary-list__key">
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">@service.Name (0.3 miles)</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">@hub.Name (@hub.DisplayDistance miles)</h3>
                 </div>
             </div>   
             <dl class="govuk-summary-list govuk-summary-list--no-border">
@@ -41,9 +41,9 @@
                         Where
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        @service?.Service_at_locations?.FirstOrDefault()?.Location?.Physical_addresses?.FirstOrDefault()?.Address_1<br>
-                        @service?.Service_at_locations?.FirstOrDefault()?.Location?.Physical_addresses?.FirstOrDefault()?.City<br>
-                        @service?.Service_at_locations?.FirstOrDefault()?.Location?.Physical_addresses?.FirstOrDefault()?.State_province @service?.Service_at_locations?.FirstOrDefault()?.Location?.Physical_addresses?.FirstOrDefault()?.Postal_code
+                        @hub.Address1<br>
+                        @hub.City<br>
+                        @hub.StateProvince @hub.Postcode
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -51,7 +51,7 @@
                         Phone
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        <a href="tel:01617780601">0161 778 0601</a>
+                            <a href="tel:@hub.Telephone">@hub.Telephone</a>
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -59,7 +59,7 @@
                         Email
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        <a href="mailto:@service?.Email">@service?.Email</a>
+                        <a href="mailto:@hub.Email">@hub.Email</a>
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -67,7 +67,7 @@
                         Website
                     </dt>
                     <dd class="govuk-summary-list__value">
-                            <a href="@service?.Url">@service?.Name, @service?.Service_at_locations?.FirstOrDefault()?.Location?.Physical_addresses?.FirstOrDefault()?.City</a>
+                            <a href="@hub.HubUrl">@hub.Name, @hub.City</a>
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">

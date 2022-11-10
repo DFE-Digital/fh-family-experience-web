@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
 using FamilyHubs.ServiceDirectory.Shared.Models.Api.Postcodes;
 using FamilyHubs.ServiceDirectory.Shared.Models.Api.OpenReferralServices;
+using FamilyHubs.ServiceDirectory.Shared.Models.Api.OpenReferralLocations;
+using FamilyHubs.ServiceDirectory.Shared.Models;
+using fh_family_experience_web.ViewModels;
+using fh_family_experience_web.ViewModels.Extensions;
 
 [PageHistory]
 public class FamilyHubResultsModel : PageModel
@@ -21,7 +25,7 @@ public class FamilyHubResultsModel : PageModel
         _localAuthorityLookupService = localAuthorityLookupService;
         _serviceDirectoryApi = serviceDirectoryApiClient;
 
-        FamilyHubs = new List<OpenReferralServiceDto>();
+        FamilyHubs = new List<FamilyHubViewModel>();
     }
 
     [TempData]
@@ -30,7 +34,7 @@ public class FamilyHubResultsModel : PageModel
     [TempData]
     public string Postcode { get; set; } = "";
 
-    public IList<OpenReferralServiceDto> FamilyHubs { get; set; }
+    public IList<FamilyHubViewModel> FamilyHubs { get; set; }
 
     public async Task OnGet()
     {
@@ -55,7 +59,9 @@ public class FamilyHubResultsModel : PageModel
             LocalAuthority = "Unknown";
         }
 
-        FamilyHubs = await _serviceDirectoryApi.GetFamilyHubsForLocalAuthorityAsync(Postcode, laCode, longitude, latitude);
+        var hubsDto = await _serviceDirectoryApi.GetFamilyHubsForLocalAuthorityAsync(Postcode, laCode, longitude, latitude);
+
+        FamilyHubs = hubsDto.ToFamilyHubViewModels();
     }
 
     public IActionResult OnPost()
