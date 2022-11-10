@@ -1,6 +1,5 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
 using fh_family_experience_web.Services;
 using fh_family_experience_web.Infrastructure;
 using fh_family_experience_web.Services.Api;
@@ -42,8 +41,6 @@ builder.Services.AddHttpClient<ServiceDirectoryApiClient>();
 
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {
-    //containerBuilder.RegisterModule(new DefaultCoreModule());
-    //containerBuilder.RegisterModule(new DefaultInfrastructureModule(builder.Environment.IsDevelopment()));
     containerBuilder.RegisterType<LocalAuthorityLookupService>().As<ILocalAuthorityLookupService>().InstancePerLifetimeScope();
     containerBuilder.RegisterType<LocalAuthorityCache>().As<ILocalAuthorityCache>().SingleInstance();
     containerBuilder.RegisterType<ServiceDirectoryApiClient>().As<IServiceDirectoryApiClient>().InstancePerLifetimeScope();
@@ -62,9 +59,6 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseCookiePolicy();
-
-app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FX API"));
-
 app.UseRouting();
 app.UseSession();
 app.UseAuthorization();
