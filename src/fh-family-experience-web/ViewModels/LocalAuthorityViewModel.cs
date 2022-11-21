@@ -2,7 +2,7 @@
 {
     public class LocalAuthorityViewModel
     {
-        public string AuthorityCode { get; set; }
-        public string AuthorityName { get; set; }
+        public string AuthorityCode { get; set; } = String.Empty;
+        public string AuthorityName { get; set; } = String.Empty;
     }
 }

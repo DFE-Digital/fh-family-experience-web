@@ -1,11 +1,9 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
-using Microsoft.Extensions.DependencyInjection;
-using fh_family_experience_web.Infrastructure.IoC;
 using fh_family_experience_web.Services;
-using fh_family_experience_web.Data;
 using fh_family_experience_web.Infrastructure;
+using fh_family_experience_web.Services.Api;
+using fh_family_experience_web.Services.Postcodes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,9 +14,6 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
     options.CheckConsentNeeded = context => true;
     options.MinimumSameSitePolicy = SameSiteMode.None;
 });
-
-string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext(connectionString);
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -42,22 +37,14 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "FX API", Version = "v1" });
-    c.EnableAnnotations();
-});
-
-builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<ServiceDirectoryApiClient>();
 
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {
-    //containerBuilder.RegisterModule(new DefaultCoreModule());
-    //containerBuilder.RegisterModule(new DefaultInfrastructureModule(builder.Environment.IsDevelopment()));
-    containerBuilder.RegisterType<PostcodeLookupService>().As<IPostcodeLookupService>().InstancePerLifetimeScope();
     containerBuilder.RegisterType<LocalAuthorityLookupService>().As<ILocalAuthorityLookupService>().InstancePerLifetimeScope();
     containerBuilder.RegisterType<LocalAuthorityCache>().As<ILocalAuthorityCache>().SingleInstance();
-    containerBuilder.RegisterType<EfRepository>().As<IReadRepository>().InstancePerLifetimeScope();
+    containerBuilder.RegisterType<ServiceDirectoryApiClient>().As<IServiceDirectoryApiClient>().InstancePerLifetimeScope();
+    containerBuilder.RegisterType<PostcodeLookupService>().As<IPostcodeLookupService>().InstancePerLifetimeScope();
 });
 
 var app = builder.Build();
@@ -72,9 +59,6 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseCookiePolicy();
-
-app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FX API"));
-
 app.UseRouting();
 app.UseSession();
 app.UseAuthorization();

@@ -1,6 +1,6 @@
-﻿using fh_family_experience_web.Models;
+﻿using fh_family_experience_web.Services.Postcodes.Model;
 
-namespace fh_family_experience_web.Services
+namespace fh_family_experience_web.Services.Postcodes
 {
     public interface IPostcodeLookupService
     {

@@ -1,7 +1,7 @@
-﻿using fh_family_experience_web.Models;
+﻿using fh_family_experience_web.Services.Postcodes.Model;
 using Newtonsoft.Json;
 
-namespace fh_family_experience_web.Services
+namespace fh_family_experience_web.Services.Postcodes
 {
     public class PostcodeLookupService : IPostcodeLookupService
     {
@@ -24,7 +24,6 @@ namespace fh_family_experience_web.Services
 
         public async Task<PostcodeIOResponse> GetPostcodeAsync(string postcode)
         {
-            //string url = $"https://api.postcodes.io/postcodes/{postcode}";
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(_postcodeIOBaseAddress);
 
@@ -37,7 +36,7 @@ namespace fh_family_experience_web.Services
 
             var result = JsonConvert.DeserializeObject<PostcodeIOResponse>(content);
 
-            return result;
+            return result!;
         }
     }
 }

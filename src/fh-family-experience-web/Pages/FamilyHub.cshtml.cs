@@ -1,11 +1,13 @@
 ﻿using fh_family_experience_web.Filters;
 using fh_family_experience_web.Helpers;
-using fh_family_experience_web.Models;
 using fh_family_experience_web.Services;
+using fh_family_experience_web.Services.Api;
+using fh_family_experience_web.Services.Postcodes;
+using fh_family_experience_web.Services.Postcodes.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace fh_family_experience_web.Pages;
@@ -13,11 +15,15 @@ namespace fh_family_experience_web.Pages;
 [PageHistory]
 public class FamilyHubModel : PageModel
 {
+    private readonly IServiceDirectoryApiClient _serviceDirectoryApiClient;
     private readonly IPostcodeLookupService _postcodeLookupService;
 
-    public FamilyHubModel(IPostcodeLookupService postcodeLookupService)
+    public FamilyHubModel(IServiceDirectoryApiClient serviceDirectoryApiClient, IPostcodeLookupService postcodeLookupService)
     {
+        _serviceDirectoryApiClient = serviceDirectoryApiClient;
         _postcodeLookupService = postcodeLookupService;
+
+        LocalAuthorityCode = String.Empty;
     }
 
     [BindProperty]
@@ -53,11 +59,16 @@ public class FamilyHubModel : PageModel
         }
 
         TempData["PostCode"] = Postcode;
-        PostcodeIOResponse = await _postcodeLookupService.GetPostcodeAsync(Postcode);
+        PostcodeIOResponse = await _postcodeLookupService.GetPostcodeAsync(Postcode!);
+
+        if (PostcodeIOResponse is null)
+            throw new Exception("Failed to get response from Service Directory API");
+
+        TempData["postcodeIoResponse"] = JsonSerializer.Serialize(PostcodeIOResponse);
 
         if (PostcodeIOResponse!.Status == "200")
         {
-            LocalAuthorityCode = PostcodeIOResponse.GetLocalAuthorityCode();
+            LocalAuthorityCode = PostcodeIOResponse.Result!.GetLocalAuthorityCode();
             return new RedirectResult("familyhubresults");
         }
 

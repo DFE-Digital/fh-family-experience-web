@@ -11,7 +11,7 @@ namespace fh_family_experience_web.Services
             _localAuthorityCache = localAuthorityCache;
         }
 
-        public LocalAuthorityViewModel GetLocalAuthorityFromCode(string localAuthorityCode)
+        public LocalAuthorityViewModel? GetLocalAuthorityFromCode(string localAuthorityCode)
         {
             if(string.IsNullOrWhiteSpace(localAuthorityCode))
                 return null;
