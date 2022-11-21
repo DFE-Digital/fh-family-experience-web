@@ -21,20 +21,25 @@
     <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/govuk-apple-touch-icon-152x152.png">
     <link rel="apple-touch-icon" href="/assets/images/govuk-apple-touch-icon.png">
 
-    <!-- Over loads for inclusion into SCSS -->
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/application.css" />
-
     <!-- Pending further research e.g. location. etc. -->
     <!-- <link href="/public/css/accessible-autocomplete.min.css" rel="stylesheet" type="text/css">-->
 
-    <link rel="stylesheet" href="~/css/govuk-frontend-4.4.0.min.css" />
-    <link rel="stylesheet" href="~/css/govuk-frontend-ie8-4.4.0.min.css" />
+    <!--[if !IE 8]><!-->
+    <link href="~/css/govuk-frontend-4.4.0.min.css" rel="stylesheet">
+    <!--<![endif]-->
+    <!--[if IE 8]>
+      <link href="~/css/govuk-frontend-ie8-4.4.0.min.css" rel="stylesheet">
+    <![endif]-->
+    @*    todo html5shiv.js still required? see https://design-system.service.gov.uk/styles/page-template/*@
+    @*todo double check assets, do we need ~?*@
+
+@*    todo: remove application.css file when no longer need to reference it*@
+    <link rel="stylesheet" href="~/css/site.css" />
 
     <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
 </head>
 
-<body class="govuk-template__body js-enabled">
+<body class="govuk-template__body">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
 
