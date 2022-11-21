@@ -2,6 +2,8 @@
 
 * using prototype css & layout - remove and use gds
 
+* check cookie banner is wired up and working
+
 * Install gov.uk frontend using npm/sass
 
 https://design-system.service.gov.uk/get-started/production/
