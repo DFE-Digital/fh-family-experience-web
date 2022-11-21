@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+﻿/*@charset "UTF-8";
 
 .app-step-nav-related__link, .app-step-nav-header__title, a, .govuk-link {
     font-family: "GDS Transport", arial, sans-serif;
@@ -7,10 +7,10 @@
     text-decoration: underline;
     text-decoration-thickness: max(1px, .0625rem);
     text-underline-offset: 0.1em;
-}
+}*/
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */
 /* stylelint-disable-line scss/comment-no-loud  */
-@font-face {
+/*@font-face {
     font-family: "GDS Transport";
     font-style: normal;
     font-weight: normal;
@@ -3396,7 +3396,7 @@ p + .govuk-heading-s,
     clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
     border-width: 12.124px 7px 0 7px;
     border-top-color: inherit;
-}
+}*/
 
 /*.govuk-details__text {
     padding-top: 15px;
@@ -3414,7 +3414,7 @@ p + .govuk-heading-s,
         margin-bottom: 0;
     }*/
 
-.govuk-error-summary {
+/*.govuk-error-summary {
     color: #0b0c0c;
     padding: 15px;
     margin-bottom: 30px;
@@ -7305,7 +7305,7 @@ p + .govuk-heading-s,
     .govuk-\!-width-one-quarter {
         width: 25% !important;
     }
-}
+}*/
 
 /* ==========================================================================
    #ASSETS
@@ -7316,7 +7316,7 @@ p + .govuk-heading-s,
 /* ==========================================================================
    #COLOURS
    ========================================================================== */
-.moj-filter-layout:after {
+/*.moj-filter-layout:after {
     content: "";
     display: block;
     clear: both;
@@ -7427,12 +7427,12 @@ p + .govuk-heading-s,
             top: 0;
             width: 2px;
         }
-}
+}*/
 
 /* ==========================================================================
    #ADD ANOTHER
    ========================================================================== */
-.moj-add-another__item {
+/*.moj-add-another__item {
     margin: 0;
     margin-top: 30px;
     padding: 0;
@@ -7469,12 +7469,12 @@ p + .govuk-heading-s,
     color: #0b0c0c;
     box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
     outline: none;
-}
+}*/
 
 /* ==========================================================================
    #BADGE
    ========================================================================== */
-.moj-badge {
+/*.moj-badge {
     font-family: "GDS Transport", arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -7577,12 +7577,12 @@ p + .govuk-heading-s,
         font-size: 14pt;
         line-height: 1.2;
     }
-}
+}*/
 
 /* ==========================================================================
    #BANNER
    ========================================================================== */
-.moj-banner {
+/*.moj-banner {
     border: 5px solid #1d70b8;
     color: #1d70b8;
     font-size: 0;
@@ -7651,11 +7651,11 @@ p + .govuk-heading-s,
     clip-path: inset(50%) !important;
     border: 0 !important;
     white-space: nowrap !important;
-}
+}*/
 
 /* Style variants
    ========================================================================== */
-.moj-banner--success {
+/*.moj-banner--success {
     border-color: #00703c;
     color: #00703c;
 }
@@ -7663,18 +7663,18 @@ p + .govuk-heading-s,
 .moj-banner--warning {
     border-color: #d4351c;
     color: #d4351c;
-}
+}*/
 
 /* ==========================================================================
    #BUTTON GROUP
    ========================================================================== */
-.moj-button-menu {
+/*.moj-button-menu {
     display: inline-block;
     position: relative;
-}
+}*/
 
 /* TOGGLE BUTTON */
-.moj-button-menu__toggle-button {
+/*.moj-button-menu__toggle-button {
     display: inline-block;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -7735,10 +7735,10 @@ p + .govuk-heading-s,
 
     .moj-button-menu__toggle-button--secondary[aria-expanded=true]:hover:after {
         background-image: url(/assets/images/icon-arrow-black-up.svg);
-    }
+    }*/
 
 /* MENU ITEM */
-.moj-button-menu__item {
+/*.moj-button-menu__item {
     display: inline-block;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -7804,13 +7804,13 @@ p + .govuk-heading-s,
     outline-offset: 0;
     position: relative;
     z-index: 10;
-}
+}*/
 
 /* MENU WRAPPER */
-.moj-button-menu__wrapper {
-    font-size: 0;
+/*.moj-button-menu__wrapper {
+    font-size: 0;*/
     /* Hide whitespace between elements */
-}
+/*}
 
 .moj-button-menu__wrapper--right {
     right: 0;
@@ -7928,11 +7928,11 @@ p + .govuk-heading-s,
     .moj-cookie-banner {
         display: none !important;
     }
-}
+}*/
 /* ==========================================================================
    #DENOTE
    ========================================================================== */
-.moj-label__currency {
+/*.moj-label__currency {
     font-family: "GDS Transport", arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -7983,12 +7983,12 @@ p + .govuk-heading-s,
 .moj-input__currency {
     margin: 0;
     padding-left: 40px;
-}
+}*/
 
 /* ==========================================================================
    #FILTER
    ========================================================================== */
-.moj-filter {
+/*.moj-filter {
     background-color: #ffffff;
     box-shadow: inset 0 0 0 1px #b1b4b6;
 }
@@ -8302,12 +8302,12 @@ p + .govuk-heading-s,
 
     .moj-filter__options div:last-of-type {
         margin-bottom: 0;
-    }
+    }*/
 
 /* ==========================================================================
    #HEADER
    ========================================================================== */
-.moj-header {
+/*.moj-header {
     background-color: #0b0c0c;
     padding-top: 15px;
     border-bottom: 10px solid #1d70b8;
@@ -8661,19 +8661,19 @@ span.moj-header__link:hover {
 
 .moj-header__navigation-link[aria-current=page] {
     text-decoration: none;
-}
+}*/
 
 /* ==========================================================================
    #IDENTITY BAR
    ========================================================================== */
-.moj-identity-bar {
+/*.moj-identity-bar {
     background-color: #ffffff;
-    box-shadow: inset 0 -1px 0 0 #b1b4b6;
+    box-shadow: inset 0 -1px 0 0 #b1b4b6;*/
     /* Takes up no space */
-    color: #0b0c0c;
-    padding-bottom: 9px;
+    /*color: #0b0c0c;
+    padding-bottom: 9px;*/
     /* Negative by 1px to compensate */
-    padding-top: 10px;
+    /*padding-top: 10px;
 }
 
     .moj-identity-bar:after {
@@ -8685,11 +8685,11 @@ span.moj-header__link:hover {
 .moj-identity-bar__container {
     max-width: 960px;
     margin: 0 15px;
-    font-size: 0;
+    font-size: 0;*/
     /* Hide whitespace between elements */
-    text-align: justify;
+    /*text-align: justify;*/
     /* Trick to remove the need for floats */
-}
+/*}
 
 @media (min-width: 40.0625em) {
     .moj-identity-bar__container {
@@ -8752,11 +8752,11 @@ span.moj-header__link:hover {
     .moj-identity-bar__details {
         display: inline-block;
         vertical-align: top;
-        padding-top: 11px;
+        padding-top: 11px;*/
         /* Alignment tweaks */
-        padding-bottom: 9px;
+        /*padding-bottom: 9px;*/
         /* Alignment tweaks */
-    }
+    /*}
 }
 
 .moj-identity-bar__actions {
@@ -8777,12 +8777,12 @@ span.moj-header__link:hover {
 
     .moj-identity-bar__menu:last-child {
         margin-right: 0;
-    }
+    }*/
 
 /* ==========================================================================
    #MESSAGES
    ========================================================================== */
-.moj-messages-container {
+/*.moj-messages-container {
     font-family: "GDS Transport", arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -9056,12 +9056,12 @@ span.moj-header__link:hover {
     fill: currentColor;
     float: left;
     margin-right: 10px;
-}
+}*/
 
 /* ==========================================================================
    # MULTI-SELECT
    ========================================================================== */
-.moj-multi-select__checkbox {
+/*.moj-multi-select__checkbox {
     display: inline-block;
     padding-left: 0;
 }
@@ -9069,12 +9069,12 @@ span.moj-header__link:hover {
 .moj-multi-select__toggle-label {
     padding: 0 !important;
     margin: 0 !important;
-}
+}*/
 
 /* ==========================================================================
    #NOTIFICATION BADGE
    ========================================================================== */
-.moj-notification-badge {
+/*.moj-notification-badge {
     font-family: "GDS Transport", arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -9113,12 +9113,12 @@ span.moj-header__link:hover {
         font-size: 14pt;
         line-height: 1.2;
     }
-}
+}*/
 
 /* ==========================================================================
    #ORGANISATION SWITCHER
    ========================================================================== */
-.moj-organisation-nav {
+/*.moj-organisation-nav {
     margin-top: 10px;
     margin-bottom: 15px;
     padding-bottom: 5px;
@@ -9496,12 +9496,12 @@ span.moj-header__link:hover {
 
 .moj-pagination__results {
     padding: 5px;
-}
+}*/
 
 /* ==========================================================================
    #PASSWORD SHOW/HIDE
    ========================================================================== */
-.moj-password-reveal {
+/*.moj-password-reveal {
     display: flex;
 }
 
@@ -9511,12 +9511,12 @@ span.moj-header__link:hover {
 
 .moj-password-reveal__button {
     width: 80px;
-}
+}*/
 
 /* ==========================================================================
    #PRIMARY NAVIGATION
    ========================================================================== */
-.moj-primary-navigation {
+/*.moj-primary-navigation {
     background-color: #f3f2f1;
 }
 
@@ -9716,12 +9716,12 @@ span.moj-header__link:hover {
         display: inline-block;
         vertical-align: middle;
     }
-}
+}*/
 
 /* ==========================================================================
    #PROGRESS BAR
    ========================================================================== */
-.moj-progress-bar {
+/*.moj-progress-bar {
     margin-bottom: 40px;
 }
 
@@ -9889,12 +9889,12 @@ span.moj-header__link:hover {
         font-size: 14pt;
         line-height: 1.2;
     }
-}
+}*/
 
 /* ==========================================================================
    #RICH TEXT EDITOR
    ========================================================================== */
-.moj-rich-text-editor__toolbar {
+/*.moj-rich-text-editor__toolbar {
     margin-bottom: 10px;
 }
 
@@ -10113,12 +10113,12 @@ span.moj-header__link:hover {
     .moj-search--inline {
         padding: 0 !important;
     }
-}
+}*/
 
 /* ==========================================================================
    #SIDE NAVIGATION
    ========================================================================== */
-.moj-side-navigation {
+/*.moj-side-navigation {
     font-family: "GDS Transport", arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -10366,12 +10366,12 @@ span.moj-header__link:hover {
     position: absolute;
     right: -5px;
     top: 2px;
-}
+}*/
 
 /* ==========================================================================
    #SECONDARY NAV
    ========================================================================== */
-.moj-sub-navigation {
+/*.moj-sub-navigation {
     margin-bottom: 40px;
 }
 
@@ -10551,12 +10551,12 @@ span.moj-header__link:hover {
 
 .moj-sub-navigation__link[aria-current=page]:focus:before {
     background-color: #0b0c0c;
-}
+}*/
 
 /* ==========================================================================
    #TAG
    ========================================================================== */
-.moj-tag {
+/*.moj-tag {
     border: 2px solid #1d70b8;
     background-color: #1d70b8;
     color: #ffffff;
@@ -10602,12 +10602,12 @@ span.moj-header__link:hover {
     border: 2px solid #505a5f;
     background-color: #505a5f;
     color: #ffffff;
-}
+}*/
 
 /* ==========================================================================
    #TASK LIST
    ========================================================================== */
-.moj-task-list {
+/*.moj-task-list {
     list-style-type: none;
     padding-left: 0;
     margin-top: 0;
@@ -10748,12 +10748,12 @@ span.moj-header__link:hover {
         margin-top: 0;
         margin-bottom: 0;
     }
-}
+}*/
 
 /* ==========================================================================
    #TIMELINE
    ========================================================================== */
-.moj-timeline {
+/*.moj-timeline {
     margin-bottom: 20px;
     overflow: hidden;
     position: relative;
@@ -10922,12 +10922,12 @@ span.moj-header__link:hover {
         font-size: 14pt;
         line-height: 1.15;
     }
-}
+}*/
 
 /* ==========================================================================
    #TIMELINE DOCUMENT STYLES – FOR BACKWARDS COMPATIBILITY
    ========================================================================== */
-.moj-timeline__documents {
+/*.moj-timeline__documents {
     list-style: none;
     margin-bottom: 0;
     padding-left: 0;
@@ -10964,12 +10964,12 @@ span.moj-header__link:hover {
 
     .moj-timeline__document-link:focus {
         color: #0b0c0c;
-    }
+    }*/
 
 /* ==========================================================================
    #TICKET PANEL
    ========================================================================== */
-.moj-ticket-panel {
+/*.moj-ticket-panel {
     display: block;
     margin-right: 0;
     flex-wrap: wrap;
@@ -12908,4 +12908,4 @@ body > header > div > div.govuk-header__logo {
 .govuk-header__navigation-item--active a:hover,
 .govuk-header__navigation-item--active a:visited {
     color: #1d8feb;
-}
+}*/
